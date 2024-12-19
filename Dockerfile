@@ -11,7 +11,8 @@ RUN apt-get update && \
                                             texlive-fonts-extra \
                                             texlive-lang-all \
                                             biber \
-                                            texlive-bibtex-extra && \
+                                            texlive-bibtex-extra \
+                                            texlive-science && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/shared/folder
