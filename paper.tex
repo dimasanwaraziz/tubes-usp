@@ -626,192 +626,203 @@ kecuali mereka pertama kali memperhatikan fitur tersebut.
 \section{Discussion}
 
 \subsubsection{Humans Identify Phishing Differently}
+Sistem email modern melibatkan beberapa lapisan perlindungan terhadap serangan
+phishing. Banyak pengirim email menyertakan pemeriksaan phishing saat email
+dikirim. Sebagian besar sistem email menyertakan setidaknya satu, dan sering
+kali lebih dari satu sistem teknis yang menyaring email yang diyakini sebagai
+spam atau phishing. Banyak dari sistem ini juga memberi label email sebagai
+kemungkinan phishing, sebagai peringatan kepada pengguna (misalnya, sistem
+email Google [25]). Dan pengguna akhir membaca email dan membuat penentuan
+legitimasi mereka sendiri.
 
-Modern email systems involve multiple layers of protection against phishing
-attacks. Many email senders include checks for phishing as emails get sent.
-Most email systems include at least one, and often more than one technical
-system that filters out emails that are believed to be spam or phishing. Many
-of these systems also label emails as possibly phishing, as a warning to users
-(e.g., Google’s email system [25]). And end users read emails and make
-legitimacy determinations on their own.
+Model Swiss Cheese dari Reason tentang penyaringan [28] menunjukkan bahwa
+ketika ada rantai filter seperti ini, filter bekerja paling baik ketika setiap
+filter bekerja pada prinsip yang berbeda atau menggunakan informasi yang
+berbeda dari filter lain dalam rantai. Jika dua filter menggunakan informasi
+yang sama (misalnya, alamat email pengirim) dengan cara yang sama, maka lubang
+di keju akan sejajar dan email berbahaya yang lolos dari satu filter juga
+kemungkinan besar akan lolos dari yang lain. Namun, jika dua filter menggunakan
+informasi yang berbeda, atau beroperasi pada informasi dengan cara yang sangat
+berbeda, maka setiap filter kemungkinan akan menangkap pesan yang terlewatkan
+oleh filter lainnya, dan menyertakan kedua filter membuat sistem lebih tangguh
+terhadap serangan daripada hanya menyertakan satu.
 
-Reason’s Swiss Cheese Model of filtering [28] suggests that when there is a
-chain of filters like this, the filters work best when each filter works on
-different principles or using different information than other filters in the
-chain. If two filters use the same information (e.g. sender from email ad-
-dress) in similar ways, then the holes in the cheese line up and malicious
-emails that get through one filter are also likely to get through the other.
-However, if two filters use different information, or operate on the
-information in fundamentally different ways, then each filter is likely to
-catch messages that the other filter misses, and including both filters makes
-the system more resilient to attacks than only including one.
+Dalam makalah ini, kami menyajikan bukti bahwa filter terakhir ini – manusia
+yang membaca email dan menentukan apakah email tersebut sah – beroperasi dengan
+cara yang sangat berbeda, menggunakan pengetahuan dan kemampuan yang berbeda,
+daripada hampir semua filter teknis. Kami menemukan bahwa manusia memiliki
+informasi penting yang tidak dimiliki oleh filter phishing teknis. Mereka
+mengandalkan keakraban mereka dengan email terkait yang diterima di masa lalu
+(72\%) dan harapan mereka terhadap email yang masuk (95\%) untuk memahami dan
+menjadi curiga terhadap email phishing. Pengetahuan ini sangat kontekstual dan
+sangat unik bagi setiap individu dan pengalaman mereka. Selain itu, manusia
+menggunakan pengetahuan mereka tentang apa yang biasa ada dalam email yang
+mereka terima di masa lalu untuk melihat bagian informasi yang tidak terduga
+dan hilang dalam email baru. Informasi ini sangat penting untuk mendeteksi
+serangan phishing zero-day, yang jarang terdeteksi oleh solusi teknis [12].
 
-In this paper, we present evidence that this final filter – humans reading
-emails and determining if an email is le- gitimate – operates in a very
-different way, using different knowledge and capabilities, than almost all of
-the technical filters. We found that humans possess important information that
-technical phishing filters do not have. They rely on their familiarity with
-related emails received in the past (72\%) and their expectations of incoming
-emails (95\%) to make sense of and become suspicious of phishing emails. This
-knowledge is highly contextual and very unique to each individual and their
-experiences. In addition, humans use their knowledge of what was typical in
-emails they received in the past to spot unexpected and missing important
-pieces of information in new emails. This information is critical for detecting
-zero-day phishing attacks, which technical solutions rarely detect [12].
+Responden kami mampu memperhatikan sifat email (misalnya 78\% memperhatikan
+bahwa itu bersifat pribadi) dan akun email tempat email diterima. Ini
+memerlukan pengetahuan tentang semua akun email yang dimiliki seseorang dan
+jenis komunikasi yang diharapkan di setiap akun berdasarkan bagaimana dan apa
+yang dipilih orang tersebut untuk menggunakan setiap akun. Sangat kompleks dan
+menantang bagi filter teknis untuk memperoleh pengetahuan semacam itu dan
+menerapkannya dengan tepat, kecuali mereka mengawasi individu.
 
-Our respondents were able to notice the nature of the email (e.g. 78\% noticed
-it was personal) and the email account in which the email was received. This
-requires knowledge of all email accounts a person has and the kinds of
-communications expected in each account based on how and what the person
-chooses to use each account for. It is very complex and chal- lenging for
-technical filters to acquire such knowledge and apply it accordingly, lest they
-surveil individuals.
+Kedua, kami menemukan bahwa manusia memiliki kemampuan unik yang mereka gunakan
+untuk mengidentifikasi pesan phishing, yang tidak dimiliki oleh filter teknis.
+94\% responden non-ahli mampu mengidentifikasi tindakan apa yang diminta email
+untuk mereka lakukan, dan lebih dari tiga perempat mengatakan mereka secara
+eksplisit memperhatikan hal ini tentang email tersebut. Permintaan untuk
+tindakan tidak umum menjadi bagian dari banyak filter spam dan phishing, dan
+ketika ada, sering kali terbatas dalam cakupan terutama oleh masalah bahasa
+(misalnya memeriksa apakah email berisi tautan ke halaman login dan
+memverifikasi apakah halaman login tersebut sah [23]). Bahkan non-ahli sangat
+peka terhadap permintaan ini dan dapat mengidentifikasinya dengan percaya diri.
 
-Second, we found that humans possess unique capabilities that they use to
-identify phishing messages, which technical filters do not have. 94\% of the
-non-expert respondents were able of identify what action the email was asking
-them to do, and over three quarters said they explicitly noticed this about the
-email. Requests for action are not commonly part of many spam and phishing
-filters, and when they are, they are often limited in scope mostly by language
-issues (e.g. checking if the email contains a link to a login page and
-verifying if the login page is legitimate [23]). Even non-experts are highly
-attuned to these requests and can confidently identify them.
+Saat menyaring, manusia juga memiliki kemampuan investigasi yang tidak dimiliki
+oleh filter teknis: mereka dapat memilih untuk mengambil waktu tambahan dan
+mencari lebih banyak informasi dari sumber pihak ketiga. Sejumlah responden
+kami menunjukkan bahwa mereka akan meminta nasihat dari rekan kerja atau
+mencoba menghubungi pengirim email yang diklaim.
 
-When filtering, humans also have an investigative ability that technical
-filters lack: they can choose to take additional time and look up more
-information from third party sources. A number of our respondents indicated
-that they would ask colleagues for advice or try to contact the purported
-sender of the email.
+Di atas adalah kemampuan dan pengetahuan yang dimiliki manusia, tetapi tidak
+dimiliki oleh filter phishing teknis. Mengikuti logika Model Swiss Cheese,
+mengandalkan kombinasi penyaringan manusia dan teknis lebih baik daripada hanya
+mengandalkan salah satu. Dalam beberapa tahun terakhir, organisasi telah lebih
+mengandalkan deteksi phishing otomatis. Temuan kami menunjukkan bahwa
+mengurangi keragaman filter dapat membuat sistem rentan terhadap phishing, dan
+bahwa mendekati pelatihan pengguna akhir dengan cara yang berbeda dapat
+memperkuat strategi untuk mencegah kerugian dari phishing.
 
-The above are capabilities and knowledge that humans have, but technical
-phishing filters lack. Following the logic of the Swiss Cheese Model, relying
-on both humans and technical filtering in combination is better than just
-relying on one or the other. In recent years, organizations have been relying
-more heavily on automated phishing detection. Our findings suggest that
-reducing the diversity of filters may leave systems vulnerable to phishing, and
-that approaching end user training differently could strengthen strategies for
-preventing harm from phishing.
+Banyak saran tentang phishing dalam komunitas TI melibatkan pencegahan pesan
+agar tidak pernah sampai ke pengguna akhir [14], daripada mencoba mendidik
+pengguna akhir. Karena pengguna akhir mampu menyaring pesan dengan cara yang
+sangat berbeda dari filter teknis, akan lebih berharga untuk menghabiskan
+sebagian uang dan sumber daya untuk meningkatkan kemampuan pengguna akhir untuk
+memiliki peran signifikan dalam mendeteksi pesan phishing. Terlalu banyak
+pelatihan phishing yang berfokus pada detail teknis (seperti parsing URL [19,
+    30]) atau perubahan perilaku (seperti tidak mengklik [20, 35]), daripada
+mencoba memperkuat kemampuan yang unik bagi manusia. Dalam makalah ini, kami
+telah menyajikan bukti beberapa pengetahuan dan kemampuan yang dimiliki manusia
+yang dapat dimanfaatkan untuk meningkatkan pelatihan dan deteksi phishing,
+misalnya membentuk harapan untuk email dan meminta informasi dari orang lain.
 
-Much of the advice about phishing in the IT commu- nity involves preventing
-messages from ever getting to end users [14], rather than trying to educate end
-users. Because end users are able to filter messages in fundamentally dif-
-ferent ways than technical filters, it would be more valuable to spend some
-money and resources improving the ability of end users to have a significant
-role in detecting phishing messages. Too much phishing training focuses on
-technical details (like url parsing [19, 30]) or behavioral changes (like not
-clicking [20, 35]), instead of trying to strengthen the ca- pabilities that are
-unique to humans. In this paper, we have presented evidence of some of the
-knowledge and capabilities that humans have which can be leveraged to enhance
-phishing training and detection, e.g. forming expectations for emails and
-asking other people for information.
-
-As the Swiss Cheese Model points out, in a series of filters, putting all of
-your resources into one layer of filters in exclu- sion to others removes the
-benefits you get from a defense in depth strategy. It is often better to have
-two imperfect filters that operate on different principles or information than
-it is to have one filter that is highly optimized but limited.
+Seperti yang ditunjukkan oleh Model Swiss Cheese, dalam serangkaian filter,
+menempatkan semua sumber daya Anda ke dalam satu lapisan filter dengan
+mengesampingkan yang lain menghilangkan manfaat yang Anda dapatkan dari
+strategi pertahanan berlapis. Seringkali lebih baik memiliki dua filter yang
+tidak sempurna yang beroperasi pada prinsip atau informasi yang berbeda
+daripada memiliki satu filter yang sangat dioptimalkan tetapi terbatas.
 
 \subsubsection{Similar to Expert Phishing Detection?}
 
-Our findings also have implications for identifying similarities between expert
-and non-expert user phishing email detection. Wash [34] conducted a detailed
-study of how people detect phishing emails. That study was conducted with IT
-experts – people with IT training and professional experience that allows them
-to successfully detect phishing emails. We ex- tended that model, and based
-many of our questions on that extended model, partially to try to determine if
-features of that model are also present in how non-experts detect phishing.
+Temuan kami juga memiliki implikasi untuk mengidentifikasi kesamaan antara
+deteksi email phishing oleh pengguna ahli dan non-ahli. Wash [34] melakukan
+studi mendetail tentang bagaimana orang mendeteksi email phishing. Studi
+tersebut dilakukan dengan para ahli IT – orang-orang dengan pelatihan IT dan
+pengalaman profesional yang memungkinkan mereka untuk berhasil mendeteksi email
+phishing. Kami memperluas model tersebut, dan mendasarkan banyak pertanyaan
+kami pada model yang diperluas tersebut, sebagian untuk mencoba menentukan
+apakah fitur-fitur dari model tersebut juga ada dalam cara non-ahli mendeteksi
+phishing.
 
-In this paper, we are able to validate parts of his model with a non-expert
-population. Wash also pointed out that in addition to IT expertise, being a
-knowledge worker can provide expertise in managing email that is relevant to
-phishing detection. Our sample is not IT experts, and it is also not primarily
-knowledge workers who deal with email constantly.
+Dalam makalah ini, kami dapat memvalidasi bagian dari modelnya dengan populasi
+non-ahli. Wash juga menunjukkan bahwa selain keahlian IT, menjadi pekerja
+pengetahuan dapat memberikan keahlian dalam mengelola email yang relevan dengan
+deteksi phishing. Sampel kami bukan ahli IT, dan juga bukan pekerja pengetahuan
+yang secara konstan berurusan dengan email.
 
-In particular, we are able to validate that non-experts do have expectations
-about what should be present in emails and notice when those things are
-different. We are also able to validate that even in non-experts, people’s
-attention is focused on what the email is requesting that they do; almost
-everyone in our study was able to identify what request the email was making.
-We validated that our non-experts self-reported that they frequently had gut
-feelings that something was off about the emails, helping them become
-suspicious. We were able to validate that people would frequently take explicit
-steps to investigate an email that they found to be suspicious. And we were
-able to validate that non-experts were able to con- clusively decide whether an
-email was a phishing email or not. This lends support to the implication that
-expertise about one’s own email inbox is an important and yet underutilized
-aspect of phishing detection training.
+Secara khusus, kami dapat memvalidasi bahwa non-ahli memang memiliki ekspektasi
+tentang apa yang seharusnya ada dalam email dan memperhatikan ketika hal-hal
+tersebut berbeda. Kami juga dapat memvalidasi bahwa bahkan pada non-ahli,
+perhatian orang terfokus pada apa yang diminta email untuk mereka lakukan;
+hampir semua orang dalam studi kami dapat mengidentifikasi permintaan apa yang
+dibuat oleh email tersebut. Kami memvalidasi bahwa non-ahli kami melaporkan
+bahwa mereka sering memiliki firasat bahwa ada sesuatu yang salah dengan email
+tersebut, membantu mereka menjadi curiga. Kami dapat memvalidasi bahwa orang
+sering mengambil langkah eksplisit untuk menyelidiki email yang mereka anggap
+mencurigakan. Dan kami dapat memvalidasi bahwa non-ahli mampu secara konklusif
+memutuskan apakah email tersebut adalah email phishing atau tidak. Ini
+mendukung implikasi bahwa keahlian tentang kotak masuk email seseorang adalah
+aspek penting dan belum dimanfaatkan dalam pelatihan deteksi phishing.
 
-We were not able to validate all aspects of Wash’s model with non-experts. In
-particular, Wash’s model includes a chronological ordering of stages – first
-sensemaking, then suspicion, then acting. Our study is a survey and was unable
-to determine a chronological ordering that things happened in, and as such, we
-are not sure that things necessarily happen for non-experts in the order that
-Wash proposes.
+Kami tidak dapat memvalidasi semua aspek model Wash dengan non-ahli. Secara
+khusus, model Wash mencakup urutan kronologis dari tahap-tahap – pertama
+pemahaman, kemudian kecurigaan, kemudian bertindak. Studi kami adalah survei
+dan tidak dapat menentukan urutan kronologis dari kejadian, dan dengan
+demikian, kami tidak yakin bahwa hal-hal tersebut terjadi pada non-ahli dalam
+urutan yang diusulkan oleh Wash.
 
 \subsubsection{Implications for Phishing Prevention}
-
-Email users engage in complex investigations of suspicious emails before they
-determine if the email is phishing, but current training and technologies do
-not support these investigations. Our findings suggest that phishing training
-could support user investigations better by encouraging users to delay taking
-actions until finalizing their investigation and encouraging email users to
-leverage peer capabilities (such as asking a friend for help). Additionally,
-companies that send email can provide helpdesk-style support to help users
-determine if the company actually sent the email to the user. Email clients
-could better support investigations by including a “help me troubleshoot this
-email” button, with contextual- ized suggestions for investigation.
+Pengguna email melakukan investigasi yang kompleks terhadap email yang
+mencurigakan sebelum mereka menentukan apakah email tersebut adalah phishing,
+tetapi pelatihan dan teknologi saat ini tidak mendukung investigasi ini. Temuan
+kami menunjukkan bahwa pelatihan phishing dapat lebih mendukung investigasi
+pengguna dengan mendorong pengguna untuk menunda tindakan hingga menyelesaikan
+investigasi mereka dan mendorong pengguna email untuk memanfaatkan kemampuan
+rekan (seperti meminta bantuan teman). Selain itu, perusahaan yang mengirim
+email dapat menyediakan dukungan gaya helpdesk untuk membantu pengguna
+menentukan apakah perusahaan benar-benar mengirim email tersebut kepada
+pengguna. Klien email dapat lebih mendukung investigasi dengan menyertakan
+tombol "bantu saya memecahkan masalah email ini", dengan saran kontekstual
+untuk investigasi.
 
 \section{Limitations}
+Makalah ini tentang orang-orang, kognisi mereka, dan bagaimana mereka berhasil
+mendeteksi phishing. Ini bukan tentang email phishing. Survei bukanlah metode
+yang baik untuk mengumpulkan data kebenaran dasar tentang email phishing yang
+sebenarnya atau kegagalan deteksi, karena bias seleksi dan ingatan yang tidak
+sempurna.
 
-This paper is about people, their cognition, and how they successfully detect
-phishing. It is not about phishing emails. A survey is not a good method for
-collecting underlying ground truth data on the actual phishing emails or
-detection failures, because of selection bias and imperfect memory.
+Mengingat email phishing mendorong pengingatan kejadian tertentu, memungkinkan
+survei untuk menyelidiki proses yang digunakan orang untuk mendeteksi email
+phishing di kotak masuk mereka. Jawaban yang kami terima hanya tentang satu
+insiden spesifik ini, dan tidak selalu mewakili insiden lain yang dialami orang
+tersebut; namun, di antara responden, jawaban ini mewakili berbagai jenis
+insiden phishing yang dihadapi oleh non-ahli. Penelitian sebelumnya hampir
+secara eksklusif berfokus pada kegagalan deteksi dan memperbaiki kegagalan
+tersebut; kami sebaliknya melihat apa yang bekerja dengan baik dalam deteksi
+phishing dan apa yang harus didukung.
 
-Recalling a phishing email prompted recollection of a specific instance,
-allowing the survey to investigate the processes that people use to detect
-phishing emails in their inbox. The answers we received were only about this
-one specific incident, and do not necessarily represent other incidents that
-the person was involved in; however, across respondents, these answers do
-represent a variety of the types of phishing incidents that non-experts
-encounter. Past research has focused almost exclusively on detection failures
-and fixing those failures; we instead look at what is working well in phishing
-detection and what should be supported.
+Karena ini adalah survei, kami hanya dapat mengajukan pertanyaan rinci tentang
+hal-hal yang kami ketahui sebelumnya. Kami mendasarkan pertanyaan survei kami
+pada investigasi Wash tentang deteksi phishing oleh ahli [34]. Kami tidak dapat
+menentukan apakah non-ahli juga menggunakan metode tambahan yang tidak ada pada
+ahli Wash. Artinya, kami berusaha untuk mengetahui metode ahli mana yang juga
+digunakan oleh non-ahli, tetapi kami tidak dapat mempelajari metode non-ahli
+yang unik untuk non-ahli. Oleh karena itu, kami tidak mengklaim bahwa metode
+ini adalah deskripsi komprehensif tentang bagaimana non-ahli mengidentifikasi
+phishing; sebaliknya, kami mengkarakterisasi beberapa metode yang mereka
+gunakan.
 
-Since this is a survey, we can only ask detailed questions about things we know
-about ahead-of-time. We based our survey questions on Wash’s investigation of
-expert phishing detection [34]. We are not able to determine if the non-experts
-also use additional methods that were not present in Wash’s experts. That is,
-we seek to learn which of these experts’ methods are also used by non-experts,
-but we cannot learn anything about non-expert methods that are unique to non-
-experts. Therefore, we do not claim that these methods are a comprehensive
-description of how non-experts identify phish- ing; instead, we characterize
-some methods that they do use.
+\section{Kesimpulan}
+Phishing adalah ancaman keamanan siber yang dialami banyak orang; hampir
+setengah dari orang yang memenuhi syarat untuk survei kami dapat
+mengidentifikasi setidaknya satu email phishing spesifik yang mereka terima.
+Orang-orang ini memiliki cerita tentang pengalaman phishing yang dapat mereka
+bagikan dengan orang lain, dan kami menduga cerita-cerita ini membentuk bagian
+penting dari bagaimana pengguna email belajar tentang phishing.
 
-\section{Conclusion}
-Phishing is a cybersecurity threat that many people experience; almost half of
-the people eligible for our survey could identify at least one specific
-phishing email that they received. These people have stories about phishing
-experiences that they can share with others, and we suspect these stories form
-an important part of how email users learn about phishing.
+Kami menemukan bahwa banyak teknik yang digunakan para ahli untuk
+mengidentifikasi phishing \cite{tigaempat}, seperti memperhatikan
+ketidaksesuaian kecil, membentuk ekspektasi tentang bagaimana email seharusnya
+terlihat dan memperhatikan perbedaan dari ekspektasi tersebut, serta menjadi
+curiga dan menyelidiki email lebih dekat, juga hadir dalam cara non-ahli
+mendeteksi email phishing.
 
-We found that many of the techniques that experts use to identify phishing
-  [34], such as noticing minor discrepancies, forming expectations about what the
-email should look like and noticing differences from those expectations, and
-becoming suspicious and investigating the email more closely, are also present
-in how non-experts detect phishing emails.
-
-We also found that much of the information that non-experts use when
-identifying phishing cannot be replicated by technical phishing detection
-systems. End users know the purpose (business, personal) of email accounts they
-receive emails at, and pay attention to that fact. They know whether an email
-is expected, and are able to compare it against other, similar emails they have
-received in the past (phishing emails often feel familiar). Additionally, these
-non-experts have investigative abilities, such as delaying responding to emails
-and asking the sender for confirmation or more information, that technical
-phishing filters don’t possess. Targeting future phishing training at improving
-the use of this unique knowledge and expanding the use of these abilities is
-likely to yield improvement in phishing protection.
+Kami juga menemukan bahwa banyak informasi yang digunakan non-ahli saat
+mengidentifikasi phishing tidak dapat direplikasi oleh sistem deteksi phishing
+teknis. Pengguna akhir mengetahui tujuan (bisnis, pribadi) dari akun email
+tempat mereka menerima email, dan memperhatikan fakta tersebut. Mereka tahu
+apakah email tersebut diharapkan, dan dapat membandingkannya dengan email lain
+yang serupa yang pernah mereka terima di masa lalu (email phishing sering kali
+terasa familiar). Selain itu, non-ahli ini memiliki kemampuan investigasi,
+seperti menunda merespons email dan meminta konfirmasi atau informasi lebih
+lanjut dari pengirim, yang tidak dimiliki oleh filter phishing teknis.
+Menargetkan pelatihan phishing di masa depan untuk meningkatkan penggunaan
+pengetahuan unik ini dan memperluas penggunaan kemampuan ini kemungkinan akan
+menghasilkan peningkatan dalam perlindungan phishing.
 
 \section*{Acknowledgments}
 This should be a simple paragraph before the References to thank those individuals and institutions who have supported your work on this article.
