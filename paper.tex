@@ -10,6 +10,8 @@
 \usepackage{verbatim}
 \usepackage{graphicx}
 \usepackage{cite}
+\usepackage{tikz}
+\usepackage{pgf-pie}
 \hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
 % updated with editorial comments 8/9/2021
 
@@ -35,14 +37,14 @@
 
 \begin{abstract}
   Email phishing adalah komunikasi penipuan yang berpura-pura menjadi sesuatu
-  yang bukan sebenarnya untuk membuat orang melakukan tindakan yang seharusnya 
-  tidak mereka lakukan. Kami melakukan survei terhadap beberapa orang dari 
-  berbagai demografi di Indonesia dan meminta mereka untuk berbagi pengalaman 
+  yang bukan sebenarnya untuk membuat orang melakukan tindakan yang seharusnya
+  tidak mereka lakukan. Kami melakukan survei terhadap beberapa orang dari
+  berbagai demografi di Indonesia dan meminta mereka untuk berbagi pengalaman
   mereka terkait email phishing. Dari analisis pengalaman tersebut, kami menemukan
-  bahwa cara pengguna email mendeteksi pesan phishing memiliki banyak kesamaan 
-  dengan cara ahli IT mengidentifikasi phishing. Kami juga menemukan bahwa pengguna 
+  bahwa cara pengguna email mendeteksi pesan phishing memiliki banyak kesamaan
+  dengan cara ahli IT mengidentifikasi phishing. Kami juga menemukan bahwa pengguna
   email memiliki pengetahuan unik dan kemampuan berharga dalam proses identifikasi
-  yang tidak dimiliki oleh kontrol teknis maupun ahli IT. Kami menyarankan bahwa 
+  yang tidak dimiliki oleh kontrol teknis maupun ahli IT. Kami menyarankan bahwa
   pelatihan yang ditargetkan pada cara memanfaatkan keunikan ini kemungkinan akan
   meningkatkan pencegahan phishing.
 \end{abstract}
@@ -52,22 +54,22 @@
 \end{IEEEkeywords}
 
 \section{Introduction}
-\IEEEPARstart{E}{mail} adalah salah satu metode komunikasi yang paling umum 
+\IEEEPARstart{E}{mail} adalah salah satu metode komunikasi yang paling umum
 digunakan, terutama dalam organisasi besar dan e-commerce. Lebih dari 3,9 miliar
 orang memiliki akun email, dan secara kolektif mereka mengirim dan menerima
-lebih dari 290 miliar email per hari \cite{sebelas}. Email merupakan salah 
-satu metode utama yang digunakan untuk berkomunikasi dengan orang asing. 
-Namun, karena email adalah sistem global di mana siapa saja dapat berkomunikasi 
+lebih dari 290 miliar email per hari \cite{satusatu}. Email merupakan salah
+satu metode utama yang digunakan untuk berkomunikasi dengan orang asing.
+Namun, karena email adalah sistem global di mana siapa saja dapat berkomunikasi
 dengan siapa saja, pelaku kejahatan mengirim email yang berpura-pura menjadi
 sesuatu yang bukan sebenarnya, dan menipu orang untuk melakukan tindakan yang
 seharusnya tidak mereka lakukan — yang dikenal sebagai phishing \cite{tigaempat}.
 Pesan phishing adalah vektor serangan yang telah menyebabkan banyak kerugian
 dalam masyarakat. Email phishing telah digunakan untuk mencuri uang dalam jumlah
 besar \cite{duadua}, menginstal ransomware \cite{tigasatu}, atau sekadar mencuri
-konten email yang kemudian dipublikasikan \cite{duasatu}. 32\% dari semua 
-pelanggaran perusahaan pada tahun 2018 disebabkan oleh phishing \cite{tigatiga}. 
+konten email yang kemudian dipublikasikan \cite{duasatu}. 32\% dari semua
+pelanggaran perusahaan pada tahun 2018 disebabkan oleh phishing \cite{tigatiga}.
 Spear-phishing – varian di mana email disesuaikan khusus dengan penerima – digunakan
-oleh 65\% kelompok yang melakukan serangan siber yang ditargetkan, dan lebih umum 
+oleh 65\% kelompok yang melakukan serangan siber yang ditargetkan, dan lebih umum
 digunakan daripada kerentanan zero-day (hanya 23\% dari kelompok tersebut) \cite{tigadua}.
 
 Phishing adalah masalah sosio-teknis, dan menangani masalah ini membutuhkan
@@ -126,24 +128,24 @@ Pendekatan deteksi dan penghapusan otomatis bertujuan untuk mengklasifikasikan
 email sebagai phishing atau sah dan memblokir atau menghapusnya sebelum
 pengguna akhir menemukannya. Upaya di bidang ini telah difokuskan pada
 peningkatan dan menemukan cara baru untuk mengidentifikasi pesan phishing yang
-masuk dan keluar menggunakan daftar hitam [10], heuristik [3, 13, 16, 23], dan
-pembelajaran mesin [9, 29]. Pendekatan ini menyaring email berdasarkan fitur
-yang diketahui yang secara konklusif mengidentifikasi email sebagai phishing.
-Namun, pendekatan otomatis mengandalkan algoritma probabilistik yang
+masuk dan keluar menggunakan daftar hitam \cite{satunol}, heuristik [3, 13, 16,
+    23], dan pembelajaran mesin [9, 29]. Pendekatan ini menyaring email berdasarkan
+fitur yang diketahui yang secara konklusif mengidentifikasi email sebagai
+phishing. Namun, pendekatan otomatis mengandalkan algoritma probabilistik yang
 menghasilkan positif palsu, menyebabkan email sah diblokir atau dihapus. Selain
 itu, pendekatan otomatis memiliki kemampuan terbatas untuk mendeteksi variasi
-baru dari serangan phishing [12] dan tidak dapat mengidentifikasi semua email
-phishing yang lebih lama.
+baru dari serangan phishing \cite{satudua} dan tidak dapat mengidentifikasi
+semua email phishing yang lebih lama.
 
 \subsubsection{Peringatan Phishing}
 Peringatan phishing melengkapi teknik deteksi otomatis dengan memperingatkan
 pengguna akhir tentang potensi email phishing, alih-alih memblokir atau
 menghapusnya. Peringatan biasanya digunakan ketika deteksi otomatis tidak dapat
-secara konklusif mengklasifikasikan email sebagai phishing [25]. Dalam
-praktiknya, peringatan telah dilaporkan meningkatkan kemampuan pengguna akhir
-untuk mengidentifikasi email phishing [8, 26]. Upaya penelitian yang sedang
-berlangsung di area ini telah difokuskan pada menemukan cara yang lebih baik
-untuk merancang dan menyajikan peringatan kepada pengguna akhir.
+secara konklusif mengklasifikasikan email sebagai phishing \cite{dualima}.
+Dalam praktiknya, peringatan telah dilaporkan meningkatkan kemampuan pengguna
+akhir untuk mengidentifikasi email phishing [8, 26]. Upaya penelitian yang
+sedang berlangsung di area ini telah difokuskan pada menemukan cara yang lebih
+baik untuk merancang dan menyajikan peringatan kepada pengguna akhir.
 
 Meskipun memiliki dampak positif, peringatan memiliki keterbatasan yang sama
 dengan pendekatan deteksi dan penghapusan otomatis. Mereka rentan terhadap
@@ -151,21 +153,21 @@ positif palsu (menandai email sah sebagai berpotensi berbahaya) dan negatif
 palsu (membiarkan email berbahaya lolos tanpa peringatan, terutama serangan
 phishing zero-hour). Seperti yang dikemukakan oleh Yang et al., peringatan dan
 pelatihan pengguna harus saling melengkapi untuk meningkatkan efektivitasnya
-  [37].
+\cite{tigatujuh}.
 
 \subsubsection{Pelatihan Pengguna}
 Peneliti dan praktisi keamanan telah mengembangkan berbagai metode dan materi
 untuk melatih pengguna mengidentifikasi dan bereaksi terhadap email phishing
-dengan tepat. Kumaraguru et al. [19] dan Caputo et al. [2] menemukan bahwa
-pelatihan tertanam (yaitu materi instruksional yang disajikan saat peserta
-mengklik URL dalam email phishing), yang sangat umum digunakan di organisasi
-besar, meningkatkan motivasi pengguna untuk belajar dan meningkatkan akuisisi
-pengetahuan. Rader et al. [27] menemukan bahwa orang juga belajar tentang
-penipuan phishing dan tindakan perlindungan dari cerita tentang insiden
-keamanan. Wash dan Cooper [35] menemukan bahwa pelatihan phishing tradisional
-yang berisi fakta dan saran bekerja lebih baik ketika disajikan oleh seorang
-ahli, sementara cerita keamanan naratif bekerja lebih baik ketika diceritakan
-oleh seorang rekan.
+dengan tepat. Kumaraguru et al. \cite{satusembilan} dan Caputo et al.
+\cite{dua} menemukan bahwa pelatihan tertanam (yaitu materi instruksional yang
+disajikan saat peserta mengklik URL dalam email phishing), yang sangat umum
+digunakan di organisasi besar, meningkatkan motivasi pengguna untuk belajar dan
+meningkatkan akuisisi pengetahuan. Rader et al. \cite{duatujuh} menemukan bahwa
+orang juga belajar tentang penipuan phishing dan tindakan perlindungan dari
+cerita tentang insiden keamanan. Wash dan Cooper \cite{tigalima} menemukan
+bahwa pelatihan phishing tradisional yang berisi fakta dan saran bekerja lebih
+baik ketika disajikan oleh seorang ahli, sementara cerita keamanan naratif
+bekerja lebih baik ketika diceritakan oleh seorang rekan.
 
 Pesan pelatihan phishing yang paling banyak dibagikan di seluruh pemerintah,
 bisnis, dan individu mengajarkan orang untuk mengidentifikasi tanda-tanda
@@ -182,8 +184,8 @@ ancaman phishing yang umum dan cara mengidentifikasinya, dengan tujuan
 memanipulasi tingkat risiko dan selanjutnya tingkat ketakutan pada pengguna [5,
     20]. Beberapa peneliti berpendapat bahwa ajakan ketakutan meningkatkan niat
 pengguna akhir untuk bertindak dengan aman. Namun, meskipun mampu mengubah niat
-perilaku pengguna akhir [5], ajakan ketakutan tidak memprediksi atau
-menghasilkan perilaku yang aman [6].
+perilaku pengguna akhir \cite{lima}, ajakan ketakutan tidak memprediksi atau
+menghasilkan perilaku yang aman \cite{enam}.
 
 Pelatihan pengguna biasanya berfokus pada aspek pesan email dan mencoba
 mengubah cara orang berpikir tentang pesan email sehingga mereka memperhatikan
@@ -196,35 +198,35 @@ yang perlu dilakukan untuk meningkatkan kemampuan pengguna akhir dalam
 mengidentifikasi dan mencegah serangan phishing.
 
 Sebagian besar pelatihan pengguna dikembangkan dari pemahaman tentang bagaimana
-dan mengapa orang jatuh ke dalam phishing [6]. Kami berhipotesis bahwa jika
-pelatihan lebih fokus pada aspek bagaimana orang sudah berpikir tentang dan
-menangani email secara umum, ini dapat membuka jalan baru untuk pelatihan
+dan mengapa orang jatuh ke dalam phishing \cite{enam}. Kami berhipotesis bahwa
+jika pelatihan lebih fokus pada aspek bagaimana orang sudah berpikir tentang
+dan menangani email secara umum, ini dapat membuka jalan baru untuk pelatihan
 phishing. Sayangnya, kami tidak memiliki pemahaman yang komprehensif tentang
 bagaimana pengguna non-ahli melakukannya. Masalah serupa dihadapi dalam
 pelatihan keterampilan teknis di mana peneliti menyelidiki cara untuk
-meningkatkan pelatihan pemecah masalah (teknisi) [15]. Mereka mempelajari dan
-mengidentifikasi proses konseptual umum dan strategi yang digunakan teknisi
-saat memecahkan masalah. Ini membantu mereka mengidentifikasi kesenjangan dalam
-metode dan pesan pelatihan yang ada dan selanjutnya membantu mereka
-mengidentifikasi area perbaikan. Kami berpendapat bahwa memahami proses dan
-strategi yang digunakan non-ahli untuk mengidentifikasi email phishing dapat
-mengungkapkan area potensial untuk perbaikan pelatihan phishing.
+meningkatkan pelatihan pemecah masalah (teknisi) \cite{satulima}. Mereka
+mempelajari dan mengidentifikasi proses konseptual umum dan strategi yang
+digunakan teknisi saat memecahkan masalah. Ini membantu mereka mengidentifikasi
+kesenjangan dalam metode dan pesan pelatihan yang ada dan selanjutnya membantu
+mereka mengidentifikasi area perbaikan. Kami berpendapat bahwa memahami proses
+dan strategi yang digunakan non-ahli untuk mengidentifikasi email phishing
+dapat mengungkapkan area potensial untuk perbaikan pelatihan phishing.
 
 \subsection{Bagaimana Orang Mengidentifikasi Email Phishing?}
 
-Downs et al. [7] menyelidiki strategi keputusan pengguna komputer non-ahli
-ketika menghadapi email yang mencurigakan. Mereka mengidentifikasi tiga
-strategi yang digunakan peserta untuk memahami email yang mereka terima: 1)
-email ini tampaknya ditujukan untuk saya; 2) normal untuk mendengar dari
+Downs et al. \cite{tujuh} menyelidiki strategi keputusan pengguna komputer
+non-ahli ketika menghadapi email yang mencurigakan. Mereka mengidentifikasi
+tiga strategi yang digunakan peserta untuk memahami email yang mereka terima:
+1) email ini tampaknya ditujukan untuk saya; 2) normal untuk mendengar dari
 perusahaan yang Anda lakukan bisnis dengannya dan 3) perusahaan terkemuka akan
-mengirim email. Downs et al. [7] menyatakan bahwa tidak ada strategi yang
-membantu orang mengidentifikasi pesan phishing yang dirancang dengan baik.
+mengirim email. Downs et al. \cite{tujuh} menyatakan bahwa tidak ada strategi
+yang membantu orang mengidentifikasi pesan phishing yang dirancang dengan baik.
 Namun, studi tersebut melibatkan peran bermain dalam lingkungan yang
 terkendali. Kami tidak tahu strategi mana yang berlaku dan seberapa umum mereka
 dalam konteks alami dan kotak masuk orang.
 
-Wash [34] melihat bagaimana ahli mengidentifikasi email phishing dengan
-mewawancarai 21 ahli IT tentang kejadian ketika mereka berhasil
+Wash \cite{tigaempat} melihat bagaimana ahli mengidentifikasi email phishing
+dengan mewawancarai 21 ahli IT tentang kejadian ketika mereka berhasil
 mengidentifikasi email sebagai phishing di kotak masuk mereka. Dia
 mengidentifikasi proses 3 tahap untuk mengidentifikasi email phishing. Pada
 tahap pertama, email diterima dan diperlakukan seperti email lainnya — konten
@@ -238,33 +240,33 @@ mencari hal-hal yang dapat membantu mereka menentukan apakah email tersebut sah
 atau tidak. Potongan informasi baru ini sering memungkinkan mereka untuk secara
 konklusif mengidentifikasi email sebagai phishing.
 
-Pekerjaan Wash [34] menunjukkan bagaimana beberapa pelajaran dari pelatihan
-phishing diterapkan dalam konteks dunia nyata. Namun, Wash hanya mempelajari
-para ahli. Para ahli mungkin memiliki keterampilan, pengalaman, dan pengetahuan
-yang lebih maju tentang phishing dan tindakan pencegahan dibandingkan dengan
-non-ahli. Kami tidak tahu temuan mana yang mungkin berlaku untuk non-ahli dan
-dapat digunakan untuk meningkatkan pelatihan mereka.
+Pekerjaan Wash \cite{tigaempat} menunjukkan bagaimana beberapa pelajaran dari
+pelatihan phishing diterapkan dalam konteks dunia nyata. Namun, Wash hanya
+mempelajari para ahli. Para ahli mungkin memiliki keterampilan, pengalaman, dan
+pengetahuan yang lebih maju tentang phishing dan tindakan pencegahan
+dibandingkan dengan non-ahli. Kami tidak tahu temuan mana yang mungkin berlaku
+untuk non-ahli dan dapat digunakan untuk meningkatkan pelatihan mereka.
 
 \subsection{Phishing: Masalah Sosio-Teknis}
 
 Phishing adalah masalah sosio-teknis. Solusi otomatis tidak mendeteksi 100\%
 email phishing. Oleh karena itu, pengguna akhir harus mengidentifikasi email
 ini di kotak masuk mereka. Seperti yang dikatakan oleh Khonji et al., tidak ada
-solusi tunggal yang ada untuk mengurangi serangan phishing [17]; sehingga
-teknik otomatis / peringatan dan pelatihan pengguna harus diterapkan untuk
-saling melengkapi [19]. Ini sebanding dengan Model Keju Swiss (SCM) James
-Reason [28] tentang penyebab dan respons kecelakaan. SCM adalah alat populer
-yang digunakan untuk menyelidiki atau menganalisis kompleksitas sistem dengan
-menunjukkan bahwa suatu insiden adalah hasil dari kombinasi kegagalan aktif
-oleh operator dan kondisi laten dari sistem. SCM menggambarkan sistem
-sosio-teknis sebagai beberapa irisan keju Swiss yang ditumpuk bersama,
-masing-masing irisan dengan lubang. Setiap irisan menggambarkan lapisan
-pertahanan sistem terhadap jenis kegagalan tertentu, sementara setiap lubang
-mewakili kegagalan dalam pertahanan sistem pada lapisan tertentu. Bryans dan
-Arief menerapkan model tersebut untuk memahami lapisan keamanan dan toleransi
-kesalahan dalam sistem komputer [1]. Mereka menggambarkan setiap lapisan
-sebagai mekanisme perlindungan terhadap jenis serangan tertentu, tetapi
-memiliki kelemahan (lubang) terhadap jenis lainnya.
+solusi tunggal yang ada untuk mengurangi serangan phishing \cite{satutujuh};
+sehingga teknik otomatis / peringatan dan pelatihan pengguna harus diterapkan
+untuk saling melengkapi \cite{satusembilan}. Ini sebanding dengan Model Keju
+Swiss (SCM) James Reason \cite{duadelapan} tentang penyebab dan respons
+kecelakaan. SCM adalah alat populer yang digunakan untuk menyelidiki atau
+menganalisis kompleksitas sistem dengan menunjukkan bahwa suatu insiden adalah
+hasil dari kombinasi kegagalan aktif oleh operator dan kondisi laten dari
+sistem. SCM menggambarkan sistem sosio-teknis sebagai beberapa irisan keju
+Swiss yang ditumpuk bersama, masing-masing irisan dengan lubang. Setiap irisan
+menggambarkan lapisan pertahanan sistem terhadap jenis kegagalan tertentu,
+sementara setiap lubang mewakili kegagalan dalam pertahanan sistem pada lapisan
+tertentu. Bryans dan Arief menerapkan model tersebut untuk memahami lapisan
+keamanan dan toleransi kesalahan dalam sistem komputer \cite{satu}. Mereka
+menggambarkan setiap lapisan sebagai mekanisme perlindungan terhadap jenis
+serangan tertentu, tetapi memiliki kelemahan (lubang) terhadap jenis lainnya.
 
 Baik teknik deteksi dan penghapusan otomatis maupun peringatan mengandalkan
 pengguna akhir sebagai garis pertahanan terakhir terhadap phishing. Namun,
@@ -272,26 +274,26 @@ jumlah serangan phishing yang berhasil baru-baru ini menunjukkan bahwa lebih
 banyak pekerjaan perlu dilakukan untuk meningkatkan pelatihan pengguna.
 Sementara sebagian besar pelatihan berfokus pada mengajarkan pengguna akhir
 untuk mengidentifikasi fitur yang diketahui dan konklusif dari email phishing,
-Downs et al. [7] dan Wash [34] menemukan bahwa pengguna akhir mengandalkan
-fitur selain pembeda konklusif untuk mengidentifikasi email phishing. Kita
-perlu mengeksplorasi cara-cara yang lebih baik untuk menjaga pengguna dalam
-lingkaran pertahanan terhadap serangan phishing. Lebih banyak penelitian perlu
-dilakukan untuk memahami bagaimana non-ahli mengidentifikasi email phishing,
-aspek atau informasi apa yang mereka andalkan, dan jenis hal yang mereka
-lakukan dalam proses tersebut. Pemahaman ini dapat membantu kita menyesuaikan
-dan menargetkan pelatihan phishing dan teknologi yang mendukung pengambilan
-keputusan manusia. Studi kami mengambil langkah pertama ke arah ini dengan
-menerapkan model Wash dalam survei untuk mempelajari teknik yang diikuti
+Downs et al. \cite{tujuh} dan Wash \cite{tigaempat} menemukan bahwa pengguna
+akhir mengandalkan fitur selain pembeda konklusif untuk mengidentifikasi email
+phishing. Kita perlu mengeksplorasi cara-cara yang lebih baik untuk menjaga
+pengguna dalam lingkaran pertahanan terhadap serangan phishing. Lebih banyak
+penelitian perlu dilakukan untuk memahami bagaimana non-ahli mengidentifikasi
+email phishing, aspek atau informasi apa yang mereka andalkan, dan jenis hal
+yang mereka lakukan dalam proses tersebut. Pemahaman ini dapat membantu kita
+menyesuaikan dan menargetkan pelatihan phishing dan teknologi yang mendukung
+pengambilan keputusan manusia. Studi kami mengambil langkah pertama ke arah ini
+dengan menerapkan model Wash dalam survei untuk mempelajari teknik yang diikuti
 non-ahli untuk mengidentifikasi email phishing.
 
 \section{Methods and Sample}
 
 Dalam makalah ini, kami melihat bagaimana pengguna non-ahli mengidentifikasi
 email phishing, dan melihat apakah beberapa teknik yang diidentifikasi oleh
-Wash [34] pada ahli juga ada ketika non-ahli mengidentifikasi email phishing.
-Untuk mempelajari ini, kami melakukan survei di mana kami meminta pengguna
-internet non-ahli untuk mengingat email tertentu yang mereka terima yang
-"mencurigakan atau berpotensi berbahaya," dan kemudian menjawab pertanyaan
+Wash \cite{tigaempat} pada ahli juga ada ketika non-ahli mengidentifikasi email
+phishing. Untuk mempelajari ini, kami melakukan survei di mana kami meminta
+pengguna internet non-ahli untuk mengingat email tertentu yang mereka terima
+yang "mencurigakan atau berpotensi berbahaya," dan kemudian menjawab pertanyaan
 tentang pengalaman mereka dengan email tersebut.
 
 Kami mengajukan pertanyaan untuk mencoba memahami apa yang mereka perhatikan
@@ -300,14 +302,14 @@ apa yang tampaknya penting bagi mereka. Ini adalah catatan retrospektif tentang
 email masa lalu; kami mengharapkan bahwa responden tidak akan mengingat
 beberapa detail tentang apa yang terjadi. Kami membuat asumsi bahwa hal-hal
 yang tidak mereka ingat kemungkinan besar kurang penting dalam pemikiran mereka
-tentang email tersebut [18].
+tentang email tersebut \cite{satudelapan}.
 
 \subsection{Survei}
 Kami memulai dengan instrumen survei yang secara longgar didasarkan pada Rader
-et al. [27]. Di awal survei, kami meminta responden untuk mengidentifikasi
-"cerita" atau insiden tertentu di mana mereka menerima email yang mencurigakan
-atau berpotensi berbahaya. Kami kemudian meminta mereka untuk menjawab sejumlah
-pertanyaan tentang insiden tertentu tersebut.
+et al. \cite{duatujuh}. Di awal survei, kami meminta responden untuk
+mengidentifikasi "cerita" atau insiden tertentu di mana mereka menerima email
+yang mencurigakan atau berpotensi berbahaya. Kami kemudian meminta mereka untuk
+menjawab sejumlah pertanyaan tentang insiden tertentu tersebut.
 
 Kami menyertakan pertanyaan penyaringan yang menanyakan kepada calon responden
 apakah mereka dapat mengingat menerima jenis email yang kami minati. Survei
@@ -321,15 +323,16 @@ responden yang menjawab ya untuk pertanyaan ini yang melanjutkan survei. 315
 calon responden yang memenuhi syarat lainnya dikeluarkan dari penelitian karena
 mereka tidak menjawab "Ya" untuk pertanyaan ini.
 
-Seperti Rader et al. [27], kami memulai survei dengan proses elicitation untuk
-membuat responden mengidentifikasi satu "email yang mencurigakan atau
-berpotensi berbahaya" untuk menjawab pertanyaan tentang. Elicitation ini
-mencakup tiga bagian. Pertama, kami meminta responden untuk menuliskan dalam
-kotak jawaban singkat "cara-cara agar pesan email dapat tidak aman atau
-menyebabkan masalah keamanan" dan "cara-cara yang Anda ketahui untuk mengenali
-email yang mencurigakan atau berpotensi berbahaya." Prompt ini dimaksudkan
-untuk membantu memicu ingatan responden tentang email phishing potensial.
-Responden menulis rata-rata 12-14 kata untuk masing-masing prompt ini.
+Seperti Rader et al. \cite{duatujuh}, kami memulai survei dengan proses
+elicitation untuk membuat responden mengidentifikasi satu "email yang
+mencurigakan atau berpotensi berbahaya" untuk menjawab pertanyaan tentang.
+Elicitation ini mencakup tiga bagian. Pertama, kami meminta responden untuk
+menuliskan dalam kotak jawaban singkat "cara-cara agar pesan email dapat tidak
+aman atau menyebabkan masalah keamanan" dan "cara-cara yang Anda ketahui untuk
+mengenali email yang mencurigakan atau berpotensi berbahaya." Prompt ini
+dimaksudkan untuk membantu memicu ingatan responden tentang email phishing
+potensial. Responden menulis rata-rata 12-14 kata untuk masing-masing prompt
+ini.
 
 Kedua, kami meminta responden untuk "memikirkan waktu di masa lalu ketika Anda
 secara pribadi menerima email yang mencurigakan atau berpotensi berbahaya" dan
@@ -346,9 +349,9 @@ mengingat email mana yang mereka jawab pertanyaan tentang. Ringkasan ini
 rata-rata sepanjang 21 kata.
 
 Sisa survei meminta lebih banyak detail tentang insiden email tertentu yang
-dipilih oleh responden. Berdasarkan model Wash [34], kami mengidentifikasi enam
-proses yang digunakan para ahli dalam mendeteksi phishing. Kami menyusun
-pertanyaan di sekitar enam proses ini:
+dipilih oleh responden. Berdasarkan model Wash \cite{tigaempat}, kami
+mengidentifikasi enam proses yang digunakan para ahli dalam mendeteksi
+phishing. Kami menyusun pertanyaan di sekitar enam proses ini:
 
 \begin{enumerate}
   \item{Memperhatikan}: Hal-hal yang mereka perhatikan tentang email, seperti kapan mereka menerima email, jenis email (lampiran, dll.), konten kerja atau pribadi, akun kerja atau pribadi, dll.
@@ -379,9 +382,9 @@ kebetulan mendekati populasi AS dalam hal pendidikan.
 
 Hanya sekitar 50\% dari sampel kami yang saat ini bekerja penuh waktu atau
 paruh waktu. Ini lebih rendah daripada populasi AS (yang sekitar 61\% bekerja
-pada saat survei [24]). Ini adalah cara utama kami percaya sampel kami berbeda
-dari populasi AS yang lebih besar. Kami tidak yakin bagaimana ini mungkin
-mempengaruhi tanggapan tentang email phishing.
+pada saat survei \cite{duaempat}). Ini adalah cara utama kami percaya sampel
+kami berbeda dari populasi AS yang lebih besar. Kami tidak yakin bagaimana ini
+mungkin mempengaruhi tanggapan tentang email phishing.
 
 \begin{table*}[h!]
   \centering
@@ -475,6 +478,23 @@ termasuk kesalahan ketik.
 
 \section{Findings}
 
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \pie[
+      text=legend,
+      radius=3,
+      color={red!50, blue!50, green!50}
+    ]{
+      12.2/Tidak yakin,
+      19.5/Tidak ingat,
+      68.3/Ya pernah menerima
+    }
+  \end{tikzpicture}
+  \caption{Persentase Responden yang Pernah Menerima Email Phishing}
+  \label{fig:phishing_experience}
+\end{figure}
+
 Dalam survei ini, kami meminta responden untuk mengidentifikasi "pesan email
 yang mencurigakan atau berpotensi berbahaya yang Anda terima di masa lalu." 315
 responden yang memenuhi syarat tidak dapat mengidentifikasi email, dan 311
@@ -495,12 +515,12 @@ terjadi saat mereka menerimanya, apa yang mereka perhatikan, dan bagaimana
 mereka menanganinya? Dalam sebagian besar makalah ini, kami melaporkan
 statistik tentang tanggapan terhadap pertanyaan pilihan ganda.
 
-Berdasarkan temuan dari Wash [34], kami mengorganisir survei berdasarkan enam
-aktivitas berbeda yang perlu dilakukan seseorang untuk mengenali email
-phishing: 1) Memperhatikan aspek-aspek email; 2) Membentuk ekspektasi tentang
-apa yang seharusnya dan tidak seharusnya ada dalam email; 3) Menjadi curiga
-terhadap email; 4) Menyelidiki email; 5) Memutuskan apakah email mencurigakan
-atau tidak; dan 6) Bertindak berdasarkan keputusan tersebut.
+Berdasarkan temuan dari Wash \cite{tigaempat}, kami mengorganisir survei
+berdasarkan enam aktivitas berbeda yang perlu dilakukan seseorang untuk
+mengenali email phishing: 1) Memperhatikan aspek-aspek email; 2) Membentuk
+ekspektasi tentang apa yang seharusnya dan tidak seharusnya ada dalam email; 3)
+Menjadi curiga terhadap email; 4) Menyelidiki email; 5) Memutuskan apakah email
+mencurigakan atau tidak; dan 6) Bertindak berdasarkan keputusan tersebut.
 
 Enam aktivitas ini memberikan cara bagi kami untuk menggambarkan apa yang
 umumnya terjadi ketika seseorang menerima email phishing, dan untuk melihat
@@ -593,19 +613,20 @@ akhir sebagai berpotensi berbahaya.
 Saat seseorang membaca email, mereka tidak dapat memperhatikan dan mengingat
 semua tentang email tersebut. Sebaliknya, hal-hal dalam email yang paling mudah
 mereka pahami dan hubungkan adalah yang paling mudah diperhatikan dan diingat
-  [18]. Kami bertanya kepada responden "Aspek apa dari email yang menonjol bagi
-Anda?" dan memungkinkan mereka untuk mencentang semua yang berlaku. Jawaban
-atas pertanyaan ini menunjukkan kepada kami, untuk email-email phishing yang
-dicurigai ini, aspek apa dari email yang paling penting bagi responden, karena
-mereka adalah yang paling mudah diingat.
+\cite{satudelapan}. Kami bertanya kepada responden "Aspek apa dari email yang
+menonjol bagi Anda?" dan memungkinkan mereka untuk mencentang semua yang
+berlaku. Jawaban atas pertanyaan ini menunjukkan kepada kami, untuk email-email
+phishing yang dicurigai ini, aspek apa dari email yang paling penting bagi
+responden, karena mereka adalah yang paling mudah diingat.
 
 Jauh lebih banyak, aspek yang diperhatikan oleh jumlah orang terbesar adalah
 bahwa email tersebut mencakup permintaan untuk tindakan. 76\% responden
 memperhatikan ini tentang email tersebut. Ini sesuai dengan penelitian
 sebelumnya yang menunjukkan bahwa orang cenderung menggunakan email sebagai
-daftar tugas [36]; mereka dengan cepat fokus pada apa yang diminta email untuk
-mereka lakukan. Ini juga sesuai dengan temuan Wash [34] bahwa permintaan untuk
-tindakan (tautan tindakan) adalah pemicu penting bagi para ahli.
+daftar tugas \cite{tigaenam}; mereka dengan cepat fokus pada apa yang diminta
+email untuk mereka lakukan. Ini juga sesuai dengan temuan Wash \cite{tigaempat}
+bahwa permintaan untuk tindakan (tautan tindakan) adalah pemicu penting bagi
+para ahli.
 
 Aspek kedua yang paling umum diperhatikan dari email adalah tentang apa email
 tersebut, dengan 52\% responden memperhatikan ini. Topik email, dan apakah
@@ -658,20 +679,20 @@ dikirim. Sebagian besar sistem email menyertakan setidaknya satu, dan sering
 kali lebih dari satu sistem teknis yang menyaring email yang diyakini sebagai
 spam atau phishing. Banyak dari sistem ini juga memberi label email sebagai
 kemungkinan phishing, sebagai peringatan kepada pengguna (misalnya, sistem
-email Google [25]). Dan pengguna akhir membaca email dan membuat penentuan
-legitimasi mereka sendiri.
+email Google \cite{dualima}). Dan pengguna akhir membaca email dan membuat
+penentuan legitimasi mereka sendiri.
 
-Model Swiss Cheese dari Reason tentang penyaringan [28] menunjukkan bahwa
-ketika ada rantai filter seperti ini, filter bekerja paling baik ketika setiap
-filter bekerja pada prinsip yang berbeda atau menggunakan informasi yang
-berbeda dari filter lain dalam rantai. Jika dua filter menggunakan informasi
-yang sama (misalnya, alamat email pengirim) dengan cara yang sama, maka lubang
-di keju akan sejajar dan email berbahaya yang lolos dari satu filter juga
-kemungkinan besar akan lolos dari yang lain. Namun, jika dua filter menggunakan
-informasi yang berbeda, atau beroperasi pada informasi dengan cara yang sangat
-berbeda, maka setiap filter kemungkinan akan menangkap pesan yang terlewatkan
-oleh filter lainnya, dan menyertakan kedua filter membuat sistem lebih tangguh
-terhadap serangan daripada hanya menyertakan satu.
+Model Swiss Cheese dari Reason tentang penyaringan \cite{duadelapan}
+menunjukkan bahwa ketika ada rantai filter seperti ini, filter bekerja paling
+baik ketika setiap filter bekerja pada prinsip yang berbeda atau menggunakan
+informasi yang berbeda dari filter lain dalam rantai. Jika dua filter
+menggunakan informasi yang sama (misalnya, alamat email pengirim) dengan cara
+yang sama, maka lubang di keju akan sejajar dan email berbahaya yang lolos dari
+satu filter juga kemungkinan besar akan lolos dari yang lain. Namun, jika dua
+filter menggunakan informasi yang berbeda, atau beroperasi pada informasi
+dengan cara yang sangat berbeda, maka setiap filter kemungkinan akan menangkap
+pesan yang terlewatkan oleh filter lainnya, dan menyertakan kedua filter
+membuat sistem lebih tangguh terhadap serangan daripada hanya menyertakan satu.
 
 Dalam makalah ini, kami menyajikan bukti bahwa filter terakhir ini – manusia
 yang membaca email dan menentukan apakah email tersebut sah – beroperasi dengan
@@ -685,7 +706,8 @@ sangat unik bagi setiap individu dan pengalaman mereka. Selain itu, manusia
 menggunakan pengetahuan mereka tentang apa yang biasa ada dalam email yang
 mereka terima di masa lalu untuk melihat bagian informasi yang tidak terduga
 dan hilang dalam email baru. Informasi ini sangat penting untuk mendeteksi
-serangan phishing zero-day, yang jarang terdeteksi oleh solusi teknis [12].
+serangan phishing zero-day, yang jarang terdeteksi oleh solusi teknis
+\cite{satudua}.
 
 Responden kami mampu memperhatikan sifat email (misalnya 78\% memperhatikan
 bahwa itu bersifat pribadi) dan akun email tempat email diterima. Ini
@@ -703,8 +725,9 @@ eksplisit memperhatikan hal ini tentang email tersebut. Permintaan untuk
 tindakan tidak umum menjadi bagian dari banyak filter spam dan phishing, dan
 ketika ada, sering kali terbatas dalam cakupan terutama oleh masalah bahasa
 (misalnya memeriksa apakah email berisi tautan ke halaman login dan
-memverifikasi apakah halaman login tersebut sah [23]). Bahkan non-ahli sangat
-peka terhadap permintaan ini dan dapat mengidentifikasinya dengan percaya diri.
+memverifikasi apakah halaman login tersebut sah \cite{duatiga}). Bahkan
+non-ahli sangat peka terhadap permintaan ini dan dapat mengidentifikasinya
+dengan percaya diri.
 
 Saat menyaring, manusia juga memiliki kemampuan investigasi yang tidak dimiliki
 oleh filter teknis: mereka dapat memilih untuk mengambil waktu tambahan dan
@@ -722,17 +745,18 @@ bahwa mendekati pelatihan pengguna akhir dengan cara yang berbeda dapat
 memperkuat strategi untuk mencegah kerugian dari phishing.
 
 Banyak saran tentang phishing dalam komunitas TI melibatkan pencegahan pesan
-agar tidak pernah sampai ke pengguna akhir [14], daripada mencoba mendidik
-pengguna akhir. Karena pengguna akhir mampu menyaring pesan dengan cara yang
-sangat berbeda dari filter teknis, akan lebih berharga untuk menghabiskan
-sebagian uang dan sumber daya untuk meningkatkan kemampuan pengguna akhir untuk
-memiliki peran signifikan dalam mendeteksi pesan phishing. Terlalu banyak
-pelatihan phishing yang berfokus pada detail teknis (seperti parsing URL [19,
-    30]) atau perubahan perilaku (seperti tidak mengklik [20, 35]), daripada
-mencoba memperkuat kemampuan yang unik bagi manusia. Dalam makalah ini, kami
-telah menyajikan bukti beberapa pengetahuan dan kemampuan yang dimiliki manusia
-yang dapat dimanfaatkan untuk meningkatkan pelatihan dan deteksi phishing,
-misalnya membentuk harapan untuk email dan meminta informasi dari orang lain.
+agar tidak pernah sampai ke pengguna akhir \cite{satuempat}, daripada mencoba
+mendidik pengguna akhir. Karena pengguna akhir mampu menyaring pesan dengan
+cara yang sangat berbeda dari filter teknis, akan lebih berharga untuk
+menghabiskan sebagian uang dan sumber daya untuk meningkatkan kemampuan
+pengguna akhir untuk memiliki peran signifikan dalam mendeteksi pesan phishing.
+Terlalu banyak pelatihan phishing yang berfokus pada detail teknis (seperti
+parsing URL [19, 30]) atau perubahan perilaku (seperti tidak mengklik [20,
+    35]), daripada mencoba memperkuat kemampuan yang unik bagi manusia. Dalam
+makalah ini, kami telah menyajikan bukti beberapa pengetahuan dan kemampuan
+yang dimiliki manusia yang dapat dimanfaatkan untuk meningkatkan pelatihan dan
+deteksi phishing, misalnya membentuk harapan untuk email dan meminta informasi
+dari orang lain.
 
 Seperti yang ditunjukkan oleh Model Swiss Cheese, dalam serangkaian filter,
 menempatkan semua sumber daya Anda ke dalam satu lapisan filter dengan
@@ -744,14 +768,14 @@ daripada memiliki satu filter yang sangat dioptimalkan tetapi terbatas.
 \subsubsection{Similar to Expert Phishing Detection?}
 
 Temuan kami juga memiliki implikasi untuk mengidentifikasi kesamaan antara
-deteksi email phishing oleh pengguna ahli dan non-ahli. Wash [34] melakukan
-studi mendetail tentang bagaimana orang mendeteksi email phishing. Studi
-tersebut dilakukan dengan para ahli IT – orang-orang dengan pelatihan IT dan
-pengalaman profesional yang memungkinkan mereka untuk berhasil mendeteksi email
-phishing. Kami memperluas model tersebut, dan mendasarkan banyak pertanyaan
-kami pada model yang diperluas tersebut, sebagian untuk mencoba menentukan
-apakah fitur-fitur dari model tersebut juga ada dalam cara non-ahli mendeteksi
-phishing.
+deteksi email phishing oleh pengguna ahli dan non-ahli. Wash \cite{tigaempat}
+melakukan studi mendetail tentang bagaimana orang mendeteksi email phishing.
+Studi tersebut dilakukan dengan para ahli IT – orang-orang dengan pelatihan IT
+dan pengalaman profesional yang memungkinkan mereka untuk berhasil mendeteksi
+email phishing. Kami memperluas model tersebut, dan mendasarkan banyak
+pertanyaan kami pada model yang diperluas tersebut, sebagian untuk mencoba
+menentukan apakah fitur-fitur dari model tersebut juga ada dalam cara non-ahli
+mendeteksi phishing.
 
 Dalam makalah ini, kami dapat memvalidasi bagian dari modelnya dengan populasi
 non-ahli. Wash juga menunjukkan bahwa selain keahlian IT, menjadi pekerja
@@ -813,16 +837,16 @@ phishing dan apa yang harus didukung.
 
 Karena ini adalah survei, kami hanya dapat mengajukan pertanyaan rinci tentang
 hal-hal yang kami ketahui sebelumnya. Kami mendasarkan pertanyaan survei kami
-pada investigasi Wash tentang deteksi phishing oleh ahli [34]. Kami tidak dapat
-menentukan apakah non-ahli juga menggunakan metode tambahan yang tidak ada pada
-ahli Wash. Artinya, kami berusaha untuk mengetahui metode ahli mana yang juga
-digunakan oleh non-ahli, tetapi kami tidak dapat mempelajari metode non-ahli
-yang unik untuk non-ahli. Oleh karena itu, kami tidak mengklaim bahwa metode
-ini adalah deskripsi komprehensif tentang bagaimana non-ahli mengidentifikasi
-phishing; sebaliknya, kami mengkarakterisasi beberapa metode yang mereka
-gunakan.
+pada investigasi Wash tentang deteksi phishing oleh ahli \cite{tigaempat}. Kami
+tidak dapat menentukan apakah non-ahli juga menggunakan metode tambahan yang
+tidak ada pada ahli Wash. Artinya, kami berusaha untuk mengetahui metode ahli
+mana yang juga digunakan oleh non-ahli, tetapi kami tidak dapat mempelajari
+metode non-ahli yang unik untuk non-ahli. Oleh karena itu, kami tidak mengklaim
+bahwa metode ini adalah deskripsi komprehensif tentang bagaimana non-ahli
+mengidentifikasi phishing; sebaliknya, kami mengkarakterisasi beberapa metode
+yang mereka gunakan.
 
-\section{Kesimpulan}
+\section{Conclusion}
 Phishing adalah ancaman keamanan siber yang dialami banyak orang; hampir
 setengah dari orang yang memenuhi syarat untuk survei kami dapat
 mengidentifikasi setidaknya satu email phishing spesifik yang mereka terima.
@@ -856,60 +880,199 @@ This should be a simple paragraph before the References to thank those individua
 \begin{thebibliography}{1}
   \bibliographystyle{IEEEtran}
 
-  \bibitem{sebelas}
-  The Radicati Group, ``Email statistics report 2019-2023 executive summary,'' Technical report, The Radicati Group, 2019.
+  \bibitem{satu}
+  Jeremy Bryans and Budi Arief. Security implications of structure. In Structure for Dependability: Computer-Based Systems from an Interdisciplinary Perspective, pages 217–227. Springer, 2006.
 
-  \bibitem{tigaempat}
-  Rick Wash. How experts detect phishing scam emails. Proceedings of the ACM: Human Computer Interaction, CSCW(160), October 2020.
+  \bibitem{dua}
+  Deanna D Caputo, Shari Lawrence Pfleeger, Jesse D
+  Freeman, and M Eric Johnson. Going spear phishing:
+  Exploring embedded training and awareness. IEEE
+  Security & Privacy, 12(1):28–38, 2013.
 
-  \bibitem{duadua}
-  MacEwan University. University Discovers Online Fraud. Press Release, 2017. https://www.macewan.ca/wcm/MacEwanNews/PHISHING\_ATTACK.
+  \bibitem{tiga}
+  Debra L. Cook, Vijay K. Gurbani, and Michael Daniluk.
+  Phishwish: a simple and stateless phishing filter. Secu-
+  rity and Communication Networks, 2(1):29–43, 2009.
 
-  \bibitem{tigasatu}
-  Rebecca Smith. How a U.S. Utility Got Hacked. Wall Street Journal, Dec 2016.
+  \bibitem{empat}
+  Lorrie Faith Cranor. Can phishing be foiled? Scientific
+  American, 299(6):104–111, 2008.
 
-  \bibitem{duasatu}
-  Eric Lipton, David E Sanger, and Scott Shane. The Perfect Weapon: How Russian Cyberpower Invaded the U.S. The New York Times, dec 2016.
+  \bibitem{lima}
+  Nicola Davinson and Elizabeth Sillence. It won’t happen
+  to me: Promoting secure behaviour among internet users.
+  Computers in Human Behavior, 26(6):1739–1747, 2010.
 
-  \bibitem{tigatiga}
-  Verizon. 2019 Data Breach Investigations Report. Technical report, 2019.
+  \bibitem{enam}
+  Julie S. Downs, Mandy Holbrook, and Lorrie Faith Cra-
+  nor. Behavioral response to phishing risk. In Proceed-
+  ings of the Anti-Phishing Working Groups 2nd Annual
+  ECrime Researchers Summit, eCrime ’07, pages 37–44,
+  New York, NY, USA, 2007. Association for Computing
+  Machinery.
 
-  \bibitem{tigadua}
-  Symantec. Internet Security Threat Report. Technical Report February, 2019.
+  \bibitem{tujuh}
+  Julie S Downs, Mandy B Holbrook, and Lorrie Faith
+  Cranor. Decision strategies and susceptibility to phish-
+  ing. In Proceedings of the second symposium on Usable
+  privacy and security, pages 79–90, 2006.
 
-  \bibitem{satuempat}
-  Jason Hong. The state of phishing attacks. Communications of the ACM, 55(1):74, Jan 2012.
+  \bibitem{delapan}
+  Serge Egelman, Lorrie Faith Cranor, and Jason Hong.
+  You’ve been warned: An empirical study of the effective-
+  ness of web browser phishing warnings. In Proceedings
+  of the SIGCHI Conference on Human Factors in Com-
+  puting Systems, CHI ’08, pages 1065–1074, New York,
+  NY, USA, 2008. Association for Computing Machinery.
+
+  \bibitem{sembilan}
+  Ian Fette, Norman Sadeh, and Anthony Tomasic. Learn-
+  ing to detect phishing emails. In Proceedings of the 16th
+  International Conference on World Wide Web, WWW
+  ’07, pages 649–656, New York, NY, USA, 2007. Asso-
+  ciation for Computing Machinery.
 
   \bibitem{satunol}
   Joshua T Goodman, Paul S Rehfuss, Robert L Rounthwaite, Manav Mishra, Geoffrey J Hulten, Kenneth G Richards, Aaron H Averbuch, Anthony P Penta, and Roderict C Deyo. Phishing detection, prevention, and notification, October 16 2012. US Patent 8,291,065.
 
-  \bibitem{ref1}
-  {\it{Mathematics Into Type}}. American Mathematical Society. [Online]. Available: https://www.ams.org/arc/styleguide/mit-2.pdf
+  \bibitem{satusatu}
+  The Radicati Group, ``Email statistics report 2019-2023 executive summary,'' Technical report, The Radicati Group, 2019.
 
-  \bibitem{ref2}
-  T. W. Chaundy, P. R. Barrett and C. Batey, {\it{The Printing of Mathematics}}. London, U.K., Oxford Univ. Press, 1954.
+  \bibitem{satudua}
+  Ryan Heartfield and George Loukas. A taxonomy of
+  attacks and a survey of defence mechanisms for seman-
+  tic social engineering attacks. ACM Computing Surveys
+  (CSUR), 48(3):1–39, 2015.
 
-  \bibitem{ref3}
-  F. Mittelbach and M. Goossens, {\it{The \LaTeX Companion}}, 2nd ed. Boston, MA, USA: Pearson, 2004.
+  \bibitem{satutiga}
+  Thorsten Holz, Christian Gorecki, Konrad Rieck, and
+  Felix C Freiling. Measuring and detecting fast-flux ser-
+  vice networks. In The Network and Distributed System
+  Security Symposium (NDSS), 2008.
 
-  \bibitem{ref4}
-  G. Gr\"atzer, {\it{More Math Into LaTeX}}, New York, NY, USA: Springer, 2007.
+  \bibitem{satuempat}
+  Jason Hong. The state of phishing attacks. Communications of the ACM, 55(1):74, Jan 2012.
 
-  \bibitem{ref5}M. Letourneau and J. W. Sharp, {\it{AMS-StyleGuide-online.pdf,}} American Mathematical Society, Providence, RI, USA, [Online]. Available: http://www.ams.org/arc/styleguide/index.html
+  \bibitem{satulima}
+  Scott D Johnson, Jeffrey W Flesher, and Shih-Ping
+  Chung. Understanding troubleshooting styles to im-
+  prove training methods. In American Vocational Associ-
+  ation Convention. ERIC, Dec 1995.
 
-  \bibitem{ref6}
-  H. Sira-Ramirez, ``On the sliding mode control of nonlinear systems,'' \textit{Syst. Control Lett.}, vol. 19, pp. 303--312, 1992.
+  \bibitem{satuenam}
+  Y. Joshi, S. Saklikar, D. Das, and S. Saha. Phishguard:
+  A browser plug-in for protection from phishing. In
+  2008 2nd International Conference on Internet Multimedia Services Architecture and Applications, pages 1–6,
+  2008.
 
-  \bibitem{ref7}
-  A. Levant, ``Exact differentiation of signals with unbounded higher derivatives,''  in \textit{Proc. 45th IEEE Conf. Decis.
-    Control}, San Diego, CA, USA, 2006, pp. 5585--5590. DOI: 10.1109/CDC.2006.377165.
+  \bibitem{satutujuh}
+  Mahmoud Khonji, Youssef Iraqi, and Andrew Jones.
+  Phishing detection: a literature survey. IEEE Communications Surveys & Tutorials, 15(4):2091–2121, 2013.
 
-  \bibitem{ref8}
-  M. Fliess, C. Join, and H. Sira-Ramirez, ``Non-linear estimation is easy,'' \textit{Int. J. Model., Ident. Control}, vol. 4, no. 1, pp. 12--27, 2008.
+  \bibitem{satudelapan}
+  Gary Klein. Sources of Power: How People Make Decisions. MIT Press, 1998.
 
-  \bibitem{ref9}
-  R. Ortega, A. Astolfi, G. Bastin, and H. Rodriguez, ``Stabilization of food-chain systems using a port-controlled Hamiltonian description,'' in \textit{Proc. Amer. Control Conf.}, Chicago, IL, USA,
-  2000, pp. 2245--2249.
+  \bibitem{satusembilan}
+  Ponnurangam Kumaraguru, Steve Sheng, Alessandro
+  Acquisti, Lorrie Faith Cranor, and Jason Hong. Teach-
+  ing johnny not to fall for phish. ACM Transactions on
+  Internet Technology (TOIT), 10(2):1–31, 2010.
+
+  \bibitem{duanol}
+  Robert LaRose, Nora J. Rifon, and Richard Enbody. Pro-
+  moting personal responsibility for internet safety. Com-
+  munications of the ACM, 51(3):71–76, March 2008.
+
+  \bibitem{duasatu}
+  Eric Lipton, David E Sanger, and Scott Shane. The Perfect Weapon: How Russian Cyberpower Invaded the U.S. The New York Times, dec 2016.
+
+  \bibitem{duadua}
+  MacEwan University. University Discovers Online Fraud. Press Release, 2017. https://www.macewan.ca/wcm/MacEwanNews/PHISHING\_ATTACK.
+
+  \bibitem{duatiga}
+  L. A. T. Nguyen, B. L. To, H. K. Nguyen, and M. H.
+  Nguyen. A novel approach for phishing detection using
+  url-based heuristic. In 2014 International Conference
+  on Computing, Management and Telecommunications
+  (ComManTel), pages 298–303, 2014.
+
+  \bibitem{duaempat}
+  US Bureau of Labor Statistics. Employment–
+  population ratio, Retrieved Feb, 2021. https:
+  //www.bls.gov/charts/employment-situation/
+  employment-population-ratio.htm.
+
+  \bibitem{dualima}
+  Rob Pegoraro. We keep falling for phishing emails,
+  and google just revealed why. Fast Company,
+  2019. https://www.fastcompany.com/90387855/
+  we-keep-falling-for-phishing-emails-and-
+  google-just-revealed-why.
+
+  \bibitem{duaenam}
+  Justin Petelka, Yixin Zou, and Florian Schaub. Put your
+  warning where your link is: Improving and evaluating
+  email phishing warnings. In Proceedings of the 2019
+  CHI Conference on Human Factors in Computing Sys-
+  tems, CHI ’19, pages 1–15, New York, NY, USA, 2019.
+  Association for Computing Machinery.
+
+  \bibitem{duatujuh}
+  Emilee Rader, Rick Wash, and Brandon Brooks. Stories
+  as informal lessons about security. In Proceedings of
+  the Eighth Symposium on Usable Privacy and Security
+  (SOUPS), pages 1–17, 2012.
+
+  \bibitem{duadelapan}
+  James Reason. Human Error. Cambridge University
+  Press, 1990.
+
+  \bibitem{duasembilan}
+  Ozgur Koray Sahingoz, Ebubekir Buber, Onder Demir,
+  and Banu Diri. Machine learning based phishing de-
+  tection from urls. Expert Systems with Applications,
+  117:345 – 357, 2019.
+
+  \bibitem{tiganol}
+  Steve Sheng, Bryant Magnien, Ponnurangam Ku-
+  maraguru, Alessandro Acquisti, Lorrie Faith Cranor, Ja-
+  son Hong, and Elizabeth Nunge. Anti-phishing phil: the
+  design and evaluation of a game that teaches people not
+  to fall for phish. In Proceedings of the 3rd Symposium
+  on Usable Privacy and Security (SOUPS), pages 88–99,
+  2007.
+
+  \bibitem{tigasatu}
+  Rebecca Smith. How a U.S. Utility Got Hacked. Wall Street Journal, Dec 2016.
+
+  \bibitem{tigadua}
+  Symantec. Internet Security Threat Report. Technical Report February, 2019.
+
+  \bibitem{tigatiga}
+  Verizon. 2019 Data Breach Investigations Report. Technical report, 2019.
+
+  \bibitem{tigaempat}
+  Rick Wash. How experts detect phishing scam emails. Proceedings of the ACM: Human Computer Interaction, CSCW(160), October 2020.
+
+  \bibitem{tigalima}
+  Rick Wash and Molly M Cooper. Who provides phish-
+  ing training? facts, stories, and people like me. In Pro-
+  ceedings of the 2018 CHI Conference on Human Factors
+  in Computing Systems, pages 1–12, 2018.
+
+  \bibitem{tigaenam}
+  Steve Whittaker, Victoria Bellotti, and Jacek Gwizdka.
+  Email in personal information management. Communi-
+  cations of the ACM, 49(1):68–73, January 2006.
+
+  \bibitem{tigatujuh}
+  Weining Yang, Aiping Xiong, Jing Chen, Robert W.
+  Proctor, and Ninghui Li. Use of phishing training to
+  improve security warning compliance: Evidence from a
+  field experiment. In Proceedings of the Hot Topics in Sci-
+  ence of Security: Symposium and Bootcamp, HoTSoS,
+  pages 52–61, New York, NY, USA, 2017. Association
+  for Computing Machinery.
 
 \end{thebibliography}
 
