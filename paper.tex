@@ -119,8 +119,8 @@ memblokir atau menghapus email tersebut. Beberapa pertahanan menggabungkan
 kerja komputer dan manusia dengan memperingatkan pengguna akhir tentang potensi
 pesan phishing, yang kemudian diselidiki lebih lanjut oleh pengguna akhir untuk
 menentukan apakah itu email phishing. Dan akhirnya, ada pertahanan manusia, di
-mana penerima email diandalkan untuk mengenali email sebagai berbahaya dan
-bertindak sesuai.
+mana penerima email diandalkan untuk mengenali email sebagai email berbahaya dan
+bertindak untuk mengantisipasinya.
 
 \subsubsection{Deteksi dan Penghapusan Otomatis}
 Pendekatan deteksi dan penghapusan otomatis bertujuan untuk mengklasifikasikan
@@ -131,7 +131,7 @@ masuk dan keluar menggunakan daftar hitam \cite{satunol}, heuristik [3, 13, 16,
     23], dan pembelajaran mesin [9, 29]. Pendekatan ini menyaring email berdasarkan
 fitur yang diketahui yang secara konklusif mengidentifikasi email sebagai
 phishing. Namun, pendekatan otomatis mengandalkan algoritma probabilistik yang
-menghasilkan positif palsu, menyebabkan email sah diblokir atau dihapus. Selain
+menghasilkan peringatan positif palsu, menyebabkan email sah diblokir atau dihapus. Selain
 itu, pendekatan otomatis memiliki kemampuan terbatas untuk mendeteksi variasi
 baru dari serangan phishing \cite{satudua} dan tidak dapat mengidentifikasi
 semua email phishing yang lebih lama.
@@ -198,12 +198,12 @@ mengidentifikasi dan mencegah serangan phishing.
 
 Sebagian besar pelatihan pengguna dikembangkan dari pemahaman tentang bagaimana
 dan mengapa orang jatuh ke dalam phishing \cite{enam}. Kami berhipotesis bahwa
-jika pelatihan lebih fokus pada aspek bagaimana orang sudah berpikir tentang
+jika pelatihan lebih fokus pada aspek bagaimana orang berpikir tentang email
 dan menangani email secara umum, ini dapat membuka jalan baru untuk pelatihan
 phishing. Sayangnya, kami tidak memiliki pemahaman yang komprehensif tentang
 bagaimana pengguna non-ahli melakukannya. Masalah serupa dihadapi dalam
 pelatihan keterampilan teknis di mana peneliti menyelidiki cara untuk
-meningkatkan pelatihan pemecah masalah (teknisi) \cite{satulima}. Mereka
+meningkatkan pelatihan pemecahan masalah (teknisi) \cite{satulima}. Mereka
 mempelajari dan mengidentifikasi proses konseptual umum dan strategi yang
 digunakan teknisi saat memecahkan masalah. Ini membantu mereka mengidentifikasi
 kesenjangan dalam metode dan pesan pelatihan yang ada dan selanjutnya membantu
@@ -396,40 +396,6 @@ Tabel 1 merangkum demografi sampel kami.
 
 \subsection{Analisis}
 
-Menjelang akhir survei, kami meminta responden untuk "silakan tulis cerita
-email tersebut seolah-olah Anda menceritakannya kepada seorang teman." Kami
-menyediakan kotak teks besar bagi peserta untuk memasukkan cerita tersebut, dan
-mengharuskan responden untuk memasukkan setidaknya 300 karakter ke dalam kotak
-ini. Responden rata-rata menulis lebih dari 400 karakter (rata-rata=411,
-min=300, maks=1523), yang berarti sekitar 80 kata per cerita rata-rata
-(rata-rata=81, min=41, maks=288). Kami memiliki dua asisten peneliti yang
-mengkode cerita-cerita ini secara paralel, bertemu setiap minggu untuk
-memperbarui buku kode, mengukur kesepakatan, dan menyelesaikan perbedaan. Kami
-akhirnya memiliki buku kode yang mengkode cerita untuk fitur-fitur yang
-diorganisir dalam 5 kategori: properti pengirim email yang diklaim; tindakan
-yang diminta oleh email; apa yang terasa aneh dalam email; tindakan yang
-diambil dalam cerita; dan keputusan akhir tentang email. Setelah pelatihan dan
-pengembangan buku kode, kedua pengkode mengkodekan semua 297 cerita secara
-independen untuk buku kode dengan 39 kode yang berbeda. Setelah pengkodean awal
-ini, lebih dari setengah kode memiliki Cronbach’s alpha di atas 0.7, dan hanya
-3 kode yang memiliki alpha di bawah 0.5. Kami menghapus 3 kode dengan
-kesepakatan rendah. Kedua pengkode kemudian bertemu dan membahas semua kejadian
-di mana terdapat ketidaksepakatan dan secara bersama-sama menyetujui keputusan
-akhir tentang semua kode untuk semua cerita.
-
-Dalam makalah ini, hasil dari pengkodean manual akan secara eksplisit diberi
-label sebagai demikian. Hasil apa pun yang tidak diberi label sebagai hasil
-dari pengkodean manual adalah data laporan diri langsung dari pertanyaan dalam
-tubuh utama survei. 13 (4\%) dari cerita disepakati sebagai "bukan cerita" oleh
-kedua pengkode. Ini adalah kejadian di mana peserta mengisi kotak teks ini
-untuk seluruh survei, tetapi tidak menggambarkan pengalaman dengan email
-tertentu, dan sebaliknya menggambarkan pengalaman yang lebih umum. Tanggapan
-ini tidak termasuk dalam statistik untuk pengkodean manual.
-
-Materi replikasi untuk analisis ini tersedia di https://osf.io/82sd9/. Selain
-itu, semua cerita disajikan persis seperti yang dimasukkan oleh responden,
-termasuk kesalahan ketik.
-
 \section{Findings}
 
 \begin{figure}[h]
@@ -510,9 +476,43 @@ terakhir); dan 17\% lebih dari setahun yang lalu.
   \label{fig:pertanyaan_2.2}
 \end{figure}
 
-Mengenai pengirim dari email - email tersebut : sekitar 78\% mengatakan itu
-adalah dari perusahaan, 7\% mengatakan email tersebut tampaknya berasal dari
-orang asing, dan 7\% dari kenalan di luar pekerjaan.
+
+
+\subsection{Noticing}
+
+Dalam memperhatikan aspek-aspek dari email, terdapat sejumlah aspek situasi 
+yang sebenarnya bukan bagian dari email itu sendiri tetapi tetap dianggap penting dan berkesan oleh responden.
+
+Sebanyak 64\% responden menyadari bahwa email tersebut masuk ke akun email
+pribadi mereka, sedang 28\% responden menerima email tersebut di akun email pekerjaan. 
+Hanya 1 responden (3\%) yang memilih opsi “Saya tidak ingat”
+mengenai akun email tempat email itu diterima. Akun tempat email diterima 
+tampaknya menjadi hal yang menonjol dan mudah diingat oleh responden, serta
+kemungkinan dapat digunakan untuk membantu mengidentifikasi email yang mencurigakan. 
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{image/2.3.png}
+  \caption{hasil pertanyaan 2.3}
+  \label{fig:pertanyaan_2.3}
+\end{figure}
+
+Mengenai konteks isi email, 35\% responden melaporkan bahwa email tersebut bersifat pribadi 
+dan 28\% menyampaikan sifat email tersebut berhubungan dengan pekerjaan.
+Cukup banyak responden yang tidak bisa mengingat konteks dari email yaitu 28\%.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{image/2.4.png}
+  \caption{hasil pertanyaan 2.4}
+  \label{fig:pertanyaan_2.4}
+\end{figure}
+
+Tentang pengirim, sebanyak 78\% responden melaporkan bahwa email tersebut tampak berasal dari 
+perusahaan, bisnis, atau organisasi lainnya. 7\% mengatakan email tersebut tampaknya berasal dari
+orang asing, dan 7\% dari kenalan di luar pekerjaan. Kemudian
+7\% responden tidak dapat mengingat dari siapa email itu tampaknya 
+berasal. 
 
 \begin{figure}[h!]
   \centering
@@ -521,86 +521,6 @@ orang asing, dan 7\% dari kenalan di luar pekerjaan.
   \label{fig:pertanyaan_2.5}
 \end{figure}
 
-\subsection{Noticing}
-
-\subsubsection{Apa yang diperhatikan orang dalam email}
-
-Saat seseorang membaca email, mereka tidak dapat memperhatikan dan mengingat
-semua tentang email tersebut. Sebaliknya, hal-hal dalam email yang paling mudah
-mereka pahami dan hubungkan adalah yang paling mudah diperhatikan dan diingat
-\cite{satudelapan}. Kami bertanya kepada responden "Aspek apa dari email yang
-menonjol bagi Anda?" dan memungkinkan mereka untuk mencentang semua yang
-berlaku. Jawaban atas pertanyaan ini menunjukkan kepada kami, untuk email-email
-phishing yang dicurigai ini, aspek apa dari email yang paling penting bagi
-responden, karena mereka adalah yang paling mudah diingat.
-
-Jauh lebih banyak, aspek yang diperhatikan oleh jumlah orang terbesar adalah
-bahwa email tersebut mencakup permintaan untuk tindakan. 76\% responden
-memperhatikan ini tentang email tersebut. Ini sesuai dengan penelitian
-sebelumnya yang menunjukkan bahwa orang cenderung menggunakan email sebagai
-daftar tugas \cite{tigaenam}; mereka dengan cepat fokus pada apa yang diminta
-email untuk mereka lakukan. Ini juga sesuai dengan temuan Wash \cite{tigaempat}
-bahwa permintaan untuk tindakan (tautan tindakan) adalah pemicu penting bagi
-para ahli.
-
-Aspek kedua yang paling umum diperhatikan dari email adalah tentang apa email
-tersebut, dengan 52\% responden memperhatikan ini. Topik email, dan apakah
-topik tersebut relevan dengan penerima email, umumnya dianggap sebagai aspek
-penting dari phishing. Data ini mendukung gagasan tersebut, dan menunjukkan
-bahwa ini adalah sesuatu yang dengan cepat dapat diidentifikasi dan diingat
-oleh orang-orang tentang email.
-
-Banyak pekerjaan sebelumnya tentang phishing telah berfokus pada "pembeda
-konklusif": aspek-aspek email yang dapat membantu penerima untuk secara
-konklusif membedakan email yang sah dari email phishing, atau setidaknya sangat
-menunjukkan phishing. Misalnya, pelatihan phishing biasanya berfokus pada aspek
-seperti URL yang tidak sesuai dalam tautan, urgensi dalam permintaan tindakan,
-atau tata bahasa/ejaan yang buruk. Namun, Wash menekankan bahwa ketika para
-ahli mengidentifikasi email phishing di kotak masuk mereka sendiri, mereka
-malah mencari ketidaksesuaian yang lebih kecil, yaitu hal-hal yang tampak aneh
-tentang email tersebut, tetapi tidak selalu menunjukkan phishing dan tentu saja
-tidak cukup untuk secara konklusif mengidentifikasi phishing.
-
-Dua hal pertama yang diperhatikan responden — permintaan untuk tindakan dan
-topik email — tidak secara konklusif menunjukkan bahwa email tersebut adalah
-pesan phishing, dan biasanya bukan bagian dari pelatihan phishing. Sebaliknya,
-mereka hanya menunjukkan bahwa ada sesuatu yang aneh tentang email tersebut.
-Namun, bagi beberapa orang, itu mungkin sudah cukup. Misalnya, pertimbangkan
-cerita ini:
-
-\textbf{Cerita P19}: \textit{Saya mendapat email Jumat lalu dari salah satu perusahaan yang kami bekerja untuk mereka yang membayar kami untuk menyediakan layanan bagi mereka dan saya segera bisa tahu itu adalah email palsu karena perusahaan yang menyamar sebagai pengirim email adalah perusahaan yang membayar kami, kami tidak membayar mereka. Saya menelepon perusahaan yang kami bekerja untuk dan melaporkannya kepada mereka sehingga mereka tahu seseorang mencoba menyamar sebagai mereka.}
-
-Dua aspek email berikutnya yang paling umum diperhatikan lebih sering dikaitkan
-dengan identifikasi phishing: tautan dalam email (44\%), kesalahan atau
-kualitas buruk (41\%). Ini sering ditemukan dalam email phishing (terutama
-jenis email phishing yang mungkin dapat dideteksi oleh non-ahli dalam sampel
-kami).
-
-Sekitar 38\% responden melaporkan bahwa nama pengirim menonjol bagi mereka.
-Aspek email lainnya, seperti lampiran, gambar, format, atau panjang email,
-diperhatikan oleh kurang dari 20\% responden, meskipun semuanya penting bagi
-sebagian kecil pengguna. Temuan ini menunjukkan bahwa orang tampaknya secara
-alami memperhatikan tindakan dan topik email jauh lebih banyak daripada mereka
-memperhatikan pembeda konklusif seperti URL atau kesalahan ketik. Ini penting,
-karena seseorang tidak dapat menggunakan fitur untuk mendeteksi phishing
-kecuali mereka pertama kali memperhatikan fitur tersebut.
-
-\subsubsection{Non-email features}
-
-In addition to noticing aspects of the email, there are a number of aspects of
-the situation that are not necessarily part of the email but nonetheless appear
-to be important and memorable to respondents.
-
-90\% of the respondents noticed that the email had come to their personal email account. None of our respondents chose the “I don’t remember” option for which email account it arrived at. The account that the email arrived to is salient and memorable to respondents, and is possibly something that can be used to help identify suspicious email. Only 78\% of respondents reported that the email was of a personal nature.
-
-70\% of the respondents reported that the email appeared
-to come from a company, business, or other organization(i.e. from a person). Only 6\% of respondents cannot remember
-who the email appeared to come from. The email sender
-appears to be a highly salient aspect of the email. It is inter-
-esting that 94\% of respondents can remember who the email
-appeared to come from, but that fact only stood out to only
-38\% of them.
-
 \subsection{Expecting}
 
 Ketika mencoba memahami dan membuat penilaian tentang sebuah email, orang
@@ -608,7 +528,7 @@ secara alami kembali pada jenis email yang mereka harapkan untuk diterima, dan
 membandingkan email tersebut dengan email-email sebelumnya yang pernah mereka
 terima \cite{tigaempat}.
 
-Hampir semua email mencurigakan tiba secara tidak terduga (95\%). Ini tampaknya
+Hampir semua email mencurigakan tiba secara tidak terduga (82\%). Ini tampaknya
 menjadi salah satu aspek terkuat dari identifikasi phishing bagi responden
 kami. Ini juga sesuatu yang pengguna temukan relatif mudah untuk
 diidentifikasi, tetapi hampir tidak mungkin diukur secara teknis. Artinya,
@@ -616,25 +536,48 @@ apakah sebuah email diharapkan atau tidak adalah sesuatu yang merupakan
 informasi berharga yang hanya dimiliki oleh pengguna dan tidak dimiliki oleh
 komputer.
 
-Namun, hanya karena email tersebut tidak diharapkan tidak berarti email
-tersebut tidak familiar. 72\% responden melaporkan "agak setuju" atau "sangat
-setuju" dengan pernyataan "Saya merasa seperti saya telah menerima pesan email
-lain seperti ini sebelumnya." Artinya, hampir tiga perempat email terasa
-familiar bagi penerima.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{image/3.4.png}
+  \caption{hasil pertanyaan 3.4}
+  \label{fig:pertanyaan_3.4}
+\end{figure}
 
-Fakta ini baik membantu maupun menghambat deteksi phishing. Di satu sisi,
-karena email tersebut familiar, orang dapat dengan mudah mengintegrasikannya ke
-dalam kehidupan mereka dan mungkin tidak membacanya dengan sangat teliti. Di
+Walaupun email tersebut tidak diharapkan tidak berarti email
+tersebut tidak familiar. 39\% responden melaporkan "agak setuju" atau "sangat
+setuju" dengan pernyataan "Saya merasa seperti saya telah menerima pesan email
+lain seperti ini sebelumnya." Artinya, lebih dari sepertiga email terasa
+familiar bagi penerima. Responden yang tidak familiar mencapai 35\% dan 25\% 
+responden menyatakan netral.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{image/3.1.png}
+  \caption{hasil pertanyaan 3.1}
+  \label{fig:pertanyaan_3.1}
+\end{figure}
+
+Fakta ini bisa membantu maupun menghambat deteksi phishing. Di satu sisi,
+karena email tersebut familiar, orang dapat dengan mudah menerimanya
+dan mungkin tidak membacanya dengan sangat teliti. Di
 sisi lain, seperti yang ditunjukkan oleh Wash \cite{tigaempat}, ketika email
-mirip dengan email lain di masa lalu, maka mungkin untuk membentuk ekspektasi
+mirip dengan email lain di masa lalu, maka mungkin terbentuk ekspektasi
 tentang apa yang tipikal dalam email-email sebelumnya, dan kemudian
 membandingkan email ini dengan email-email sebelumnya yang serupa dan
 memperhatikan lebih banyak hal yang berbeda atau salah tentang email ini.
 
 Meskipun responden melaporkan menerima email yang mirip dengan email
-mencurigakan, email mencurigakan tersebut bukanlah email yang tipikal. 86\%
+mencurigakan, email mencurigakan tersebut bukanlah email yang tipikal. 71\%
 responden memilih "agak setuju" atau "sangat setuju" tentang pernyataan "Pesan
-email ini tampak berbeda dari pesan email yang biasanya saya terima."
+email ini tampak berbeda dari pesan email yang biasanya saya terima.". Sisanya 
+7\% menyatakan tidak setuju dan 21\% menyatakan netral.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{image/3.5.png}
+  \caption{hasil pertanyaan 3.5}
+  \label{fig:pertanyaan_3.5}
+\end{figure}
 
 Menggabungkan temuan-temuan ini, email mencurigakan yang diingat orang umumnya
 adalah email yang tidak diharapkan, berbeda dari email yang biasanya diterima,
@@ -642,13 +585,22 @@ tetapi sering kali mirip dengan email lain yang pernah diterima sebelumnya.
 Perasaan bahwa sebuah email mencurigakan, atau tidak diharapkan, mewakili
 intuisi, atau "perasaan intuitif" tentang sebuah email, dan intuisi semacam itu
 sering kali merupakan aspek penting dari pengambilan keputusan manusia
-\cite{satudelapan}. Hanya 19\% responden yang ingat pernah menerima email dari
+\cite{satudelapan}. Hanya 3\% responden yang ingat pernah menerima email dari
 pengirim ini sebelumnya. Sisanya baik tidak pernah menerima email dari pengirim
-tersebut (45\%) atau tidak yakin (33\%). Jadi meskipun email tersebut terasa
-familiar, pengirimnya umumnya tidak. Lebih mencolok lagi, hanya 12\% responden
-yang benar-benar pernah berinteraksi dengan pengirim sebelum membaca email ini,
-dan 80\% responden memilih "Tidak" untuk pernah berinteraksi dengan pengirim
-sebelumnya. Ini menunjukkan bahwa non-ahli mengingat dan memperhatikan dengan
+tersebut (74\%) atau tidak yakin (18\%). Jadi meskipun email tersebut terasa
+familiar, pengirimnya umumnya tidak. 
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{image/3.2.png}
+  \caption{hasil pertanyaan 3.2}
+  \label{fig:pertanyaan_3.2}
+\end{figure}
+
+Lebih mencolok lagi, hanya 15\% responden
+yang benar-benar pernah berinteraksi dengan pengirim sebelum membaca email ini, 14\% responden
+tidak ingat dengan pengirim, dan 67\% responden menyatakan tidak pernah berinteraksi dengan pengirim
+sebelumnya. Ini menunjukkan bahwa orang awam non IT mengingat dan memperhatikan dengan
 siapa mereka berinteraksi melalui email dan bahwa informasi ini penting bagi
 mereka saat memproses email baru.
 
@@ -669,21 +621,12 @@ adalah email phishing yang stereotip, meskipun jika ada kejutan, itu adalah
 bahwa lebih dari 40\% responden tidak mengingat permintaan tautan. Hanya 19\%
 email yang dilaporkan meminta pengguna untuk membuka lampiran.
 
-46\% email meminta penerima untuk merespons email dengan beberapa jenis informasi. Artinya, alih-alih menggunakan halaman web untuk mengumpulkan informasi atau melampirkan kode berbahaya ke email, email tersebut meminta tanggapan. Menanggapi email adalah aktivitas yang sangat normal dan sehari-hari. Sebagai contoh, pertimbangkan cerita ini:
-
-\textbf{Cerita P20}: \textit{Saya mendapat email dari pengirim yang tidak dikenal dan berasal dari negara lain. Mengenai negara tersebut, saya tidak yakin dari negara mana asalnya. Saya tidak mengenali pengirim sama sekali. Mereka memberi tahu saya bahwa saya memenangkan semacam lotere dan yang perlu saya lakukan hanyalah memverifikasi nama, alamat, tanggal lahir saya dan saya bisa mendapatkan uangnya. Kemudian mereka juga mengatakan bahwa untuk mendapatkan uang tersebut, saya hanya perlu memverifikasi informasi tersebut dan kemudian mereka akan mengirimkan uang tersebut ke rekening bank saya. Kemudian untuk mengirimkannya, mereka membutuhkan informasi rekening bank saya, nomor routing dan nomor rekening, serta nama dan alamat bank. Saya merasa semua ini sangat mengkhawatirkan dan selalu diberitahu untuk tidak pernah memberikan nomor jaminan sosial atau informasi pribadi lainnya kepada siapa pun yang memintanya.}
+46\% email meminta penerima untuk merespons email dengan beberapa jenis informasi. 
+Artinya, alih-alih menggunakan halaman web untuk mengumpulkan informasi atau 
+melampirkan kode berbahaya ke email, email tersebut meminta tanggapan. Menanggapi email adalah aktivitas yang sangat normal dan sehari-hari.
 
 Hampir sepertiga email, atau 32\% email, meminta pengguna untuk mengambil
-tindakan di luar konteks email. P39 diminta untuk melakukan panggilan telepon,
-misalnya:
-
-\textbf{Cerita P39}: \textit{Setelah menerima email peringatan penipuan yang meminta saya untuk menghubungi perusahaan yang saya lakukan bisnis dengannya, saya memeriksa nomor teleponnya, dan itu bukan yang saya miliki. Saya juga tidak mengetahui adanya aktivitas penipuan yang melibatkan saya; namun saya memiliki keraguan. Oleh karena itu saya menelepon nomor yang diminta, dan mereka mulai menanyakan pertanyaan untuk mengonfirmasi identitas saya. Saya enggan memberikan informasi apa pun, dan mereka memberi tahu saya bahwa mereka tidak akan memberikan informasi kepada saya karena mereka khawatir tentang identitas saya.
-
-  Setelah sedikit diskusi, saya mengakhiri panggilan tersebut. Kemudian saya
-  menghubungi perusahaan tersebut di nomor yang sudah saya kenal. Mereka akhirnya
-  mentransfer saya ke departemen penipuan secara internal. Hasil akhirnya adalah
-  bahwa email tersebut sah, hanya saja konstruksinya buruk. Kabar baiknya adalah
-  tidak ada penipuan terkait akun saya.}
+tindakan di luar konteks email. 
 
 Sebagian besar ringkasan phishing berfokus pada cara teknis untuk mengumpulkan
 informasi (tautan berbahaya, lampiran malware) \cite{tigadua}, tetapi ini
